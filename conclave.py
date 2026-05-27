@@ -25,6 +25,18 @@ def main_menu():
 
     option = input("\n *  Choose your option: ")
 
+    match option:
+        case "0":
+            option = 0
+        case "1":
+            option = 1
+        case "2":
+            option = 2
+        case "3":
+            option = 3
+        case _:
+            option = 1
+
     return int(option)
 
 
@@ -39,6 +51,20 @@ def player_menu():
     print("(0) EXIT")
 
     option = input("\n *  Choose your option: ")
+
+    match option:
+        case "0":
+            option = 0
+        case "1":
+            option = 1
+        case "2":
+            option = 2
+        case "3":
+            option = 3
+        case "4":
+            option = 4
+        case _:
+            option = 2
 
     return int(option)
 
@@ -55,6 +81,20 @@ def gm_menu():
 
     option = input("\n *  Choose your option: ")
 
+    match option:
+        case "0":
+            option = 0
+        case "1":
+            option = 1
+        case "2":
+            option = 2
+        case "3":
+            option = 3
+        case "4":
+            option = 4
+        case _:
+            option = 2
+
     return int(option)
 
 
@@ -69,6 +109,20 @@ def party_menu():
     print("(0) EXIT")
 
     option = input("\n *  Choose your option: ")
+
+    match option:
+        case "0":
+            option = 0
+        case "1":
+            option = 1
+        case "2":
+            option = 2
+        case "3":
+            option = 3
+        case "4":
+            option = 4
+        case _:
+            option = 2
 
     return int(option)
 
@@ -91,7 +145,7 @@ if __name__ == "__main__":
 
                 player_id = str(len(database["players"]) + 1)
 
-                print(f"You are creating the player with ID {player_id}.")
+                print(f"You are creating the player with ID {player_id}.\n")
 
                 name = input("NAME: ")
                 email = input("EMAIL: ")
@@ -206,7 +260,7 @@ if __name__ == "__main__":
 
                 gm_id = str(len(database["gamemasters"]) + 1)
 
-                print(f"You are creating the gamemaster with ID {gm_id}.")
+                print(f"You are creating the gamemaster with ID {gm_id}.\n")
 
                 name = input("NAME: ")
                 email = input("EMAIL: ")
@@ -321,37 +375,37 @@ if __name__ == "__main__":
 
                 party_id = str(len(database["parties"]) + 1)
 
+                print(f"You are creating the party with ID {party_id}.\n")
+
                 gamemaster_id = input("GAMEMASTER ID: ")
 
                 if gamemaster_id not in database["gamemasters"]:
                     print("\nGamemaster not found!")
 
                     input("\nPress ENTER to continue...")
+                else:
+                    players = input("PLAYERS IDs (e.g. 1 3 5): ").split(" ")
 
-                    continue
+                    game = input("GAMERULES: ")
 
-                players = input("PLAYERS IDs (e.g. 1 3 5): ").split(" ")
+                    player_names = []
 
-                game = input("GAMERULES: ")
+                    for player_id in players:
+                        if player_id in database["players"]:
+                            player_names.append(database["players"][player_id]["name"])
 
-                player_names = []
+                    database["parties"][party_id] = {
+                        "gamemaster": database["gamemasters"][gamemaster_id]["name"],
+                        "number_of_players": len(player_names),
+                        "players": player_names,
+                        "game": game,
+                    }
 
-                for player_id in players:
-                    if player_id in database["players"]:
-                        player_names.append(database["players"][player_id]["name"])
+                    save_database()
 
-                database["parties"][party_id] = {
-                    "gamemaster": database["gamemasters"][gamemaster_id]["name"],
-                    "number_of_players": len(player_names),
-                    "players": player_names,
-                    "game": game,
-                }
+                    print("\nParty created successfully!")
 
-                save_database()
-
-                print("\nParty created successfully!")
-
-                input("\nPress ENTER to continue...")
+                    input("\nPress ENTER to continue...")
 
             # FIND PARTY
             elif menu_option == 2:
