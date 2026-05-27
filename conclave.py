@@ -14,6 +14,25 @@ def save_database():
         json.dump(database, db, indent=4, ensure_ascii=False)
 
 
+def welcome():
+    clear()
+
+    print(r"""
+          _______  _        _______  _______  _______  _______ 
+|\     /|(  ____ \( \      (  ____ \(  ___  )(       )(  ____ \
+| )   ( || (    \/| (      | (    \/| (   ) || () () || (    \/
+| | _ | || (__    | |      | |      | |   | || || || || (__    
+| |( )| ||  __)   | |      | |      | |   | || |(_)| ||  __)   
+| || || || (      | |      | |      | |   | || |   | || (      
+| () () || (____/\| (____/\| (____/\| (___) || )   ( || (____/\
+(_______)(_______/(_______/(_______/(_______)|/     \|(_______/
+
+                 Welcome to Conclave!
+""")
+
+    input("\nPress ENTER to continue...")
+
+
 def main_menu():
     clear()
 
@@ -129,6 +148,8 @@ def party_menu():
 
 if __name__ == "__main__":
     option = -1
+
+    welcome()
 
     while option != 0:
         option = main_menu()
