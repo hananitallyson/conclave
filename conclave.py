@@ -441,16 +441,16 @@ if __name__ == "__main__":
 
                     game = input("GAMERULES: ")
 
-                    player_names = []
+                    player_list = []
 
                     for player_id in players:
                         if player_id in database["players"]:
-                            player_names.append(database["players"][player_id]["name"])
+                            player_list.append(database["players"][player_id])
 
                     database["parties"][party_id] = {
                         "gamemaster": database["gamemasters"][gamemaster_id]["name"],
-                        "number_of_players": len(player_names),
-                        "players": player_names,
+                        "number_of_players": len(player_list),
+                        "players": player_list,
                         "game": game,
                     }
 
@@ -483,7 +483,7 @@ if __name__ == "__main__":
                     print("PLAYERS:")
 
                     for player in party["players"]:
-                        print(f"- {player}")
+                        print(f"- {player['name']}")
 
                 else:
                     print("\nParty not found!")
@@ -567,7 +567,7 @@ if __name__ == "__main__":
                     print("\nParty not found!")
 
                 input("\nPress ENTER to continue...")
-        
+
         # LOGS
         elif option == 4:
             menu_option = log_menu()
