@@ -148,6 +148,35 @@ def party_menu():
     return option
 
 
+def log_menu():
+    clear()
+
+    print("---------- CONCLAVE LOGS ----------")
+    print("(1) MODULE 1")
+    print("(2) MODULE 2")
+    print("(3) MODULE 3")
+    print("(4) MODULE 4")
+    print("(0) EXIT")
+
+    option = input("\n *  Choose your option: ")
+
+    match option:
+        case "0":
+            option = 0
+        case "1":
+            option = 1
+        case "2":
+            option = 2
+        case "3":
+            option = 3
+        case "4":
+            option = 4
+        case _:
+            option = 2
+
+    return option
+
+
 if __name__ == "__main__":
     option = -1
 
@@ -537,6 +566,10 @@ if __name__ == "__main__":
                     print("\nParty not found!")
 
                 input("\nPress ENTER to continue...")
+        
+        # LOGS
+        elif option == 4:
+            menu_option = log_menu()
 
         elif option == 0:
             print("\nExiting...\n")
