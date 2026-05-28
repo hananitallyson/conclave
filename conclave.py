@@ -479,9 +479,7 @@ if __name__ == "__main__":
                     print(f"GAMEMASTER: {party['gamemaster']}")
                     print(f"GAME: {party['game']}")
                     print(f"NUMBER OF PLAYERS: {party['number_of_players']}")
-
                     print("PLAYERS:")
-
                     for player in party["players"]:
                         print(f"- {player['name']}")
 
@@ -517,20 +515,20 @@ if __name__ == "__main__":
 
                         game = input("NEW GAMERULES: ")
 
-                        player_names = []
+                        player_list = []
 
                         for player_id in players:
                             if player_id in database["players"]:
-                                player_names.append(
-                                    database["players"][player_id]["name"]
+                                player_list.append(
+                                    database["players"][player_id]
                                 )
 
                         database["parties"][party_id] = {
                             "gamemaster": database["gamemasters"][gamemaster_id][
                                 "name"
                             ],
-                            "number_of_players": len(player_names),
-                            "players": player_names,
+                            "number_of_players": len(player_list),
+                            "players": player_list,
                             "game": game,
                         }
 
