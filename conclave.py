@@ -254,7 +254,7 @@ if __name__ == "__main__":
 
                     yes = input("CONTINUE? (Y/N): ").upper()
 
-                    if yes == "Y":
+                    if (yes == "Y") or (yes == ""):
                         clear()
 
                         print("---------- UPDATE PLAYER ----------")
@@ -289,7 +289,7 @@ if __name__ == "__main__":
 
                     yes = input("CONTINUE? (Y/N): ").upper()
 
-                    if yes == "Y":
+                    if (yes == "Y") or (yes == ""):
                         del database["players"][player_id]
 
                         save_database()
@@ -369,7 +369,7 @@ if __name__ == "__main__":
 
                     yes = input("CONTINUE? (Y/N): ").upper()
 
-                    if yes == "Y":
+                    if (yes == "Y") or (yes == ""):
                         clear()
 
                         print("---------- UPDATE GAMEMASTER ----------")
@@ -404,7 +404,7 @@ if __name__ == "__main__":
 
                     yes = input("CONTINUE? (Y/N): ").upper()
 
-                    if yes == "Y":
+                    if (yes == "Y") or (yes == ""):
                         del database["gamemasters"][gm_id]
 
                         save_database()
@@ -503,7 +503,7 @@ if __name__ == "__main__":
 
                     yes = input("CONTINUE? (Y/N): ").upper()
 
-                    if yes == "Y":
+                    if (yes == "Y") or (yes == ""):
                         gamemaster_id = input("NEW GAMEMASTER ID: ")
 
                         if gamemaster_id not in database["gamemasters"]:
@@ -556,7 +556,7 @@ if __name__ == "__main__":
 
                     yes = input("CONTINUE? (Y/N): ").upper()
 
-                    if yes == "Y":
+                    if (yes == "Y") or (yes == ""):
                         del database["parties"][party_id]
 
                         save_database()
