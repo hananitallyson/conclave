@@ -34,6 +34,11 @@
       "name": "Mipha",
       "email": "mipha@zora.com",
       "phone": "84 99999-7777"
+    },
+    "8": {
+      "name": "Revali",
+      "email": "revali@rito.com",
+      "phone": "84 99999-8888"
     }
   },
 
@@ -47,22 +52,34 @@
       "name": "Rauru",
       "email": "rauru@hyrule.com",
       "phone": "84 98888-2222"
+    },
+    "3": {
+      "name": "Urbosa",
+      "email": "urbosa@gerudo.com",
+      "phone": "84 98888-3333"
     }
   },
 
   "parties": {
     "1": {
-      "gamemaster": "Ganondorf",
+      "gamemaster_id": "1",
       "number_of_players": 3,
-      "players": ["Link", "Zelda", "Impa"],
+      "player_ids": ["1", "2", "3"],
       "game": "Dungeons & Dragons"
     },
 
     "2": {
-      "gamemaster": "Rauru",
+      "gamemaster_id": "2",
       "number_of_players": 4,
-      "players": ["Sidon", "Midna", "Daruk", "Mipha"],
+      "player_ids": ["4", "5", "6", "7"],
       "game": "Dragonbane"
+    },
+
+    "3": {
+      "gamemaster_id": "3",
+      "number_of_players": 2,
+      "player_ids": ["1", "8"],
+      "game": "Pathfinder 2e"
     }
   }
 }

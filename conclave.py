@@ -441,16 +441,10 @@ if __name__ == "__main__":
 
                     game = input("GAMERULES: ")
 
-                    player_list = []
-
-                    for player_id in players:
-                        if player_id in database["players"]:
-                            player_list.append(database["players"][player_id])
-
                     database["parties"][party_id] = {
-                        "gamemaster": database["gamemasters"][gamemaster_id]["name"],
-                        "number_of_players": len(player_list),
-                        "players": player_list,
+                        "gamemaster_id": gamemaster_id,
+                        "number_of_players": len(players),
+                        "player_ids": players,
                         "game": game,
                     }
 
@@ -476,12 +470,12 @@ if __name__ == "__main__":
                     print("---------- FIND PARTY ----------")
 
                     print(f"ID: {party_id}")
-                    print(f"GAMEMASTER: {party['gamemaster']}")
+                    print(f"GAMEMASTER: {database['gamemasters'][party['gamemaster_id']]['name']}")
                     print(f"GAME: {party['game']}")
                     print(f"NUMBER OF PLAYERS: {party['number_of_players']}")
                     print("PLAYERS:")
-                    for player in party["players"]:
-                        print(f"- {player['name']}")
+                    for player_id in party["player_ids"]:
+                        print(f"- {database['players'][player_id]['name']}")
 
                 else:
                     print("\nParty not found!")
