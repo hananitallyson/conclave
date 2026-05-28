@@ -179,7 +179,7 @@ def log_menu():
 
 
 if __name__ == "__main__":
-    option = -1
+    option = ""
 
     welcome()
 
@@ -475,7 +475,8 @@ if __name__ == "__main__":
                     print(f"NUMBER OF PLAYERS: {party['number_of_players']}")
                     print("PLAYERS:")
                     for player_id in party["player_ids"]:
-                        print(f"- {database['players'][player_id]['name']}")
+                        player = database["players"][player_id]
+                        print(f"- {player['name']} ({player['phone']})")
 
                 else:
                     print("\nParty not found!")
