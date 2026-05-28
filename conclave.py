@@ -40,6 +40,7 @@ def main_menu():
     print("(1) PLAYERS")
     print("(2) GAMEMASTERS")
     print("(3) PARTIES")
+    print("(4) LOGS")
     print("(0) EXIT")
 
     option = input("\n *  Choose your option: ")
