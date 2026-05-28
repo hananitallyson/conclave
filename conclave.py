@@ -53,10 +53,12 @@ def main_menu():
             option = 2
         case "3":
             option = 3
+        case "4":
+            option = 4
         case _:
             option = 1
 
-    return int(option)
+    return option
 
 
 def player_menu():
@@ -85,7 +87,7 @@ def player_menu():
         case _:
             option = 2
 
-    return int(option)
+    return option
 
 
 def gm_menu():
@@ -114,7 +116,7 @@ def gm_menu():
         case _:
             option = 2
 
-    return int(option)
+    return option
 
 
 def party_menu():
@@ -143,7 +145,7 @@ def party_menu():
         case _:
             option = 2
 
-    return int(option)
+    return option
 
 
 if __name__ == "__main__":
