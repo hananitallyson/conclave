@@ -509,6 +509,8 @@ if __name__ == "__main__":
 
                 party_id = input("SELECT THE PARTY ID: ")
 
+                created_at = database["parties"][party_id]["created_at"]
+
                 if party_id in database["parties"]:
                     print(f"\nYOU CHOOSE PARTY {party_id}")
 
@@ -533,6 +535,7 @@ if __name__ == "__main__":
                             "number_of_players": len(players),
                             "players": players,
                             "game": game,
+                            "created_at": created_at
                         }
 
                         save_database()
