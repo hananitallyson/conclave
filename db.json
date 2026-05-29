@@ -3,83 +3,93 @@
     "1": {
       "name": "Link",
       "email": "link@hyrule.com",
-      "phone": "84 99999-1111"
+      "discord": "@hero_of_hyrule",
+      "created_at": "2026-05-29T17:22:41.035002"
     },
     "2": {
       "name": "Zelda",
       "email": "zelda@hyrule.com",
-      "phone": "84 99999-2222"
+      "discord": "@princess_zelda",
+      "created_at": "2026-05-29T17:23:10.000000"
     },
     "3": {
-      "name": "Impa",
-      "email": "impa@hyrule.com",
-      "phone": "84 99999-3333"
-    },
-    "4": {
-      "name": "Sidon",
-      "email": "sidon@zora.com",
-      "phone": "84 99999-4444"
-    },
-    "5": {
-      "name": "Midna",
-      "email": "midna@twilight.com",
-      "phone": "84 99999-5555"
-    },
-    "6": {
-      "name": "Daruk",
-      "email": "daruk@goron.com",
-      "phone": "84 99999-6666"
-    },
-    "7": {
       "name": "Mipha",
       "email": "mipha@zora.com",
-      "phone": "84 99999-7777"
+      "discord": "@grace_of_zora",
+      "created_at": "2026-05-29T17:23:30.000000"
     },
-    "8": {
+    "4": {
+      "name": "Daruk",
+      "email": "daruk@goron.com",
+      "discord": "@goron_champion",
+      "created_at": "2026-05-29T17:23:50.000000"
+    },
+    "5": {
       "name": "Revali",
       "email": "revali@rito.com",
-      "phone": "84 99999-8888"
-    }
-  },
-
-  "gamemasters": {
-    "1": {
-      "name": "Ganondorf",
-      "email": "ganondorf@gerudo.com",
-      "phone": "84 98888-1111"
+      "discord": "@rito_ace",
+      "created_at": "2026-05-29T17:24:10.000000"
     },
-    "2": {
-      "name": "Rauru",
-      "email": "rauru@hyrule.com",
-      "phone": "84 98888-2222"
-    },
-    "3": {
+    "6": {
       "name": "Urbosa",
       "email": "urbosa@gerudo.com",
-      "phone": "84 98888-3333"
+      "discord": "@chief_urbosa",
+      "created_at": "2026-05-29T17:24:30.000000"
+    },
+    "7": {
+      "name": "Sidon",
+      "email": "sidon@zora.com",
+      "discord": "@prince_sidon",
+      "created_at": "2026-05-29T17:24:50.000000"
+    },
+    "8": {
+      "name": "Purah",
+      "email": "purah@hyrule.com",
+      "discord": "@ancient_researcher",
+      "created_at": "2026-05-29T17:25:10.000000"
     }
   },
-
+  "gamemasters": {
+    "1": {
+      "name": "King Rhoam",
+      "email": "rhoam@hyrule.com",
+      "years_experience": 25,
+      "created_at": "2026-05-29T17:24:03.091277"
+    },
+    "2": {
+      "name": "Impa",
+      "email": "impa@kakariko.com",
+      "years_experience": 50,
+      "created_at": "2026-05-29T17:24:45.000000"
+    },
+    "3": {
+      "name": "Robbie",
+      "email": "robbie@akkala.com",
+      "years_experience": 15,
+      "created_at": "2026-05-29T17:25:30.000000"
+    }
+  },
   "parties": {
     "1": {
       "gamemaster_id": "1",
-      "number_of_players": 3,
-      "player_ids": ["1", "2", "3"],
-      "game": "Dungeons & Dragons"
+      "number_of_players": 4,
+      "player_ids": ["1", "2", "3", "4"],
+      "game": "Dungeons & Dragons 5e",
+      "created_at": "2026-05-29T17:24:23.560133"
     },
-
     "2": {
       "gamemaster_id": "2",
-      "number_of_players": 4,
-      "player_ids": ["4", "5", "6", "7"],
-      "game": "Dragonbane"
+      "number_of_players": 2,
+      "player_ids": ["5", "6"],
+      "game": "Dragonbane",
+      "created_at": "2026-05-29T17:25:15.000000"
     },
-
     "3": {
       "gamemaster_id": "3",
       "number_of_players": 2,
-      "player_ids": ["1", "8"],
-      "game": "Pathfinder 2e"
+      "player_ids": ["7", "8"],
+      "game": "Forbidden Lands",
+      "created_at": "2026-05-29T17:25:45.000000"
     }
   }
 }
