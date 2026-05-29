@@ -34,6 +34,15 @@ def welcome():
     input("\nPress ENTER to continue...")
 
 
+def todo():
+    clear()
+
+    print("---------- UNDER CONSTRUCTION ----------")
+    print("This module is currently under development.")
+
+    input("\nPress ENTER to return...")
+
+
 def main_menu():
     clear()
 
@@ -570,6 +579,8 @@ if __name__ == "__main__":
         # LOGS
         elif option == 4:
             menu_option = log_menu()
+
+            todo()
 
         elif option == 0:
             print("\nExiting...\n")
