@@ -528,14 +528,6 @@ if __name__ == "__main__":
 
                         game = input("NEW GAMERULES: ")
 
-                        player_list = []
-
-                        for player_id in players:
-                            if player_id in database["players"]:
-                                player_list.append(
-                                    database["players"][player_id]
-                                )
-
                         database["parties"][party_id] = {
                             "gamemaster": database["gamemasters"][gamemaster_id]["name"],
                             "number_of_players": len(player_list),
