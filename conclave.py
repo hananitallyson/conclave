@@ -581,7 +581,8 @@ if __name__ == "__main__":
         elif option == 4:
             menu_option = log_menu()
 
-            todo()
+            if menu_option != 0:
+                todo()
 
         elif option == 0:
             print("\nExiting...\n")
