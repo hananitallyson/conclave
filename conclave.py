@@ -1,5 +1,6 @@
 import subprocess
 import json
+from datetime import datetime
 
 with open("db.json", "r", encoding="utf-8") as db:
     database = json.load(db)
@@ -202,12 +203,14 @@ if __name__ == "__main__":
 
                 name = input("NAME: ")
                 email = input("EMAIL: ")
-                phone = input("PHONE NUMBER: ")
+                discord = input("DISCORD (e.g. @username): ")
+                created_at = datetime.now().isoformat()
 
                 database["players"][player_id] = {
                     "name": name,
                     "email": email,
-                    "phone": phone,
+                    "discord": discord,
+                    "created_at": created_at,
                 }
 
                 save_database()
@@ -234,7 +237,7 @@ if __name__ == "__main__":
                     print(f"ID: {player_id}")
                     print(f"NAME: {player['name']}")
                     print(f"EMAIL: {player['email']}")
-                    print(f"PHONE NUMBER: {player['phone']}")
+                    print(f"DISCORD: {player['discord']}")
 
                 else:
                     print("\nPlayer not found!")
@@ -261,11 +264,11 @@ if __name__ == "__main__":
 
                         name = input("NAME: ")
                         email = input("EMAIL: ")
-                        phone = input("PHONE NUMBER: ")
+                        discord = input("DISCORD: ")
 
                         database["players"][player_id]["name"] = name
                         database["players"][player_id]["email"] = email
-                        database["players"][player_id]["phone"] = phone
+                        database["players"][player_id]["discord"] = discord
 
                         save_database()
 
@@ -317,12 +320,14 @@ if __name__ == "__main__":
 
                 name = input("NAME: ")
                 email = input("EMAIL: ")
-                phone = input("PHONE NUMBER: ")
+                years_experience = int(input("YEARS OF EXPERIENCE (e.g. 2): "))
+                created_at = datetime.now().isoformat()
 
                 database["gamemasters"][gm_id] = {
                     "name": name,
                     "email": email,
-                    "phone": phone,
+                    "years_experience": years_experience,
+                    "created_at": created_at
                 }
 
                 save_database()
@@ -349,7 +354,7 @@ if __name__ == "__main__":
                     print(f"ID: {gm_id}")
                     print(f"NAME: {gm['name']}")
                     print(f"EMAIL: {gm['email']}")
-                    print(f"PHONE NUMBER: {gm['phone']}")
+                    print(f"YEARS OF EXPERIENCE: {gm['years_experience']}")
 
                 else:
                     print("\nGamemaster not found!")
@@ -376,11 +381,11 @@ if __name__ == "__main__":
 
                         name = input("NAME: ")
                         email = input("EMAIL: ")
-                        phone = input("PHONE NUMBER: ")
+                        years_experience = input("YEARS OF EXPERIENCE: ")
 
                         database["gamemasters"][gm_id]["name"] = name
                         database["gamemasters"][gm_id]["email"] = email
-                        database["gamemasters"][gm_id]["phone"] = phone
+                        database["gamemasters"][gm_id]["years_experience"] = years_experience
 
                         save_database()
 
@@ -441,11 +446,14 @@ if __name__ == "__main__":
 
                     game = input("GAMERULES: ")
 
+                    created_at = datetime.now().isoformat()
+
                     database["parties"][party_id] = {
                         "gamemaster_id": gamemaster_id,
                         "number_of_players": len(players),
                         "player_ids": players,
                         "game": game,
+                        "created_at": created_at
                     }
 
                     save_database()
@@ -476,7 +484,7 @@ if __name__ == "__main__":
                     print("PLAYERS:")
                     for player_id in party["player_ids"]:
                         player = database["players"][player_id]
-                        print(f"- {player['name']} ({player['phone']})")
+                        print(f"- {player['name']} ({player['discord']})")
 
                 else:
                     print("\nParty not found!")
@@ -519,9 +527,7 @@ if __name__ == "__main__":
                                 )
 
                         database["parties"][party_id] = {
-                            "gamemaster": database["gamemasters"][gamemaster_id][
-                                "name"
-                            ],
+                            "gamemaster": database["gamemasters"][gamemaster_id]["name"],
                             "number_of_players": len(player_list),
                             "players": player_list,
                             "game": game,
