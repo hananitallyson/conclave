@@ -529,9 +529,9 @@ if __name__ == "__main__":
                         game = input("NEW GAMERULES: ")
 
                         database["parties"][party_id] = {
-                            "gamemaster": database["gamemasters"][gamemaster_id]["name"],
-                            "number_of_players": len(player_list),
-                            "players": player_list,
+                            "gamemaster": gamemaster_id,
+                            "number_of_players": len(players),
+                            "players": players,
                             "game": game,
                         }
 
