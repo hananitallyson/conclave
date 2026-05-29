@@ -37,8 +37,9 @@ def welcome():
 def todo():
     clear()
 
-    print("---------- UNDER CONSTRUCTION ----------")
-    print("This module is currently under development.")
+    print("---------- TODO ----------")
+    print("This module has not been implemented yet.")
+    print("TODO: Feature under development.")
 
     input("\nPress ENTER to return...")
 
