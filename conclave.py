@@ -189,6 +189,48 @@ def log_menu():
     return option
 
 
+def input_name(msg):
+    name = input(msg)
+
+    while not validate_name(name):
+        print("Invalid name.\nTry again!\n")
+        name = input(msg)
+
+    return name
+
+
+def validate_name(name):
+    is_valid = False
+
+    if name:
+        is_valid = True
+    else:
+        is_valid = False
+
+    return is_valid
+
+
+def input_email(msg):
+    email = input(msg)
+
+    while not validate_name(email):
+        print("Invalid email.\nTry again!\n")
+        email = input(msg)
+
+    return email
+
+
+def validate_email(email):
+    is_valid = False
+
+    if "@" in email:
+        is_valid = True
+    else:
+        is_valid = False
+
+    return is_valid
+
+
 if __name__ == "__main__":
     option = ""
 
@@ -211,8 +253,8 @@ if __name__ == "__main__":
 
                 print(f"You are creating the player with ID {player_id}.\n")
 
-                name = input("NAME: ")
-                email = input("EMAIL: ")
+                name = input_name("NAME: ")
+                email = input_email("EMAIL: ")
                 discord = input("DISCORD (e.g. @username): ")
                 created_at = datetime.now().isoformat()
 
