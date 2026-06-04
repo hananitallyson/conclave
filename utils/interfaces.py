@@ -1,5 +1,7 @@
+from . import helpers
+
 def welcome():
-    clear()
+    helpers.clear()
 
     print(r"""
  ██████╗ ██████╗ ███╗   ██╗ ██████╗██╗      █████╗ ██╗   ██╗███████╗
@@ -18,7 +20,7 @@ def welcome():
 
 
 def todo():
-    clear()
+    helpers.clear()
 
     print("---------- TODO ----------")
     print("This module has not been implemented yet.")
@@ -28,7 +30,7 @@ def todo():
 
 
 def main_menu():
-    clear()
+    helpers.clear()
 
     print("---------- CONCLAVE MENU ----------")
     print("(1) PLAYERS")
@@ -57,7 +59,7 @@ def main_menu():
 
 
 def player_menu():
-    clear()
+    helpers.clear()
 
     print("---------- PLAYERS ----------")
     print("(1) NEW PLAYER")
@@ -86,7 +88,7 @@ def player_menu():
 
 
 def gm_menu():
-    clear()
+    helpers.clear()
 
     print("---------- GAMEMASTERS ----------")
     print("(1) NEW GAMEMASTER")
@@ -115,7 +117,7 @@ def gm_menu():
 
 
 def party_menu():
-    clear()
+    helpers.clear()
 
     print("---------- PARTIES ----------")
     print("(1) NEW PARTY")
@@ -144,7 +146,7 @@ def party_menu():
 
 
 def log_menu():
-    clear()
+    helpers.clear()
 
     print("---------- CONCLAVE LOGS ----------")
     print("(1) MODULE 1")

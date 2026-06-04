@@ -1,4 +1,6 @@
-def input_name(msg):
+from . import validation
+
+def name(msg):
     name = input(msg)
 
     while not validation.name(name):
@@ -8,7 +10,7 @@ def input_name(msg):
     return name
 
 
-def input_email(msg):
+def email(msg):
     email = input(msg)
 
     while not validation.email(email):
@@ -18,7 +20,7 @@ def input_email(msg):
     return email
 
 
-def input_discord(msg):
+def discord(msg):
     username = input(msg)
 
     while not validation.username(username):
