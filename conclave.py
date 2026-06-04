@@ -1,8 +1,9 @@
 import subprocess
 import json
+import utils.validation as validation
 from datetime import datetime
 
-with open("db.json", "r", encoding="utf-8") as db:
+with open("database.json", "r", encoding="utf-8") as db:
     database = json.load(db)
 
 
@@ -13,222 +14,6 @@ def clear():
 def save_database():
     with open("db.json", "w", encoding="utf-8") as db:
         json.dump(database, db, indent=4, ensure_ascii=False)
-
-
-def welcome():
-    clear()
-
-    print(r"""
- ██████╗ ██████╗ ███╗   ██╗ ██████╗██╗      █████╗ ██╗   ██╗███████╗
-██╔════╝██╔═══██╗████╗  ██║██╔════╝██║     ██╔══██╗██║   ██║██╔════╝
-██║     ██║   ██║██╔██╗ ██║██║     ██║     ███████║██║   ██║█████╗
-██║     ██║   ██║██║╚██╗██║██║     ██║     ██╔══██║╚██╗ ██╔╝██╔══╝
-╚██████╗╚██████╔╝██║ ╚████║╚██████╗███████╗██║  ██║ ╚████╔╝ ███████╗
- ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝
-
-═══════════════════════════════════════════════════════════════════════
-                     Welcome to CONCLAVE
-═══════════════════════════════════════════════════════════════════════
-""")
-
-    input("\nPress ENTER to continue...")
-
-
-def todo():
-    clear()
-
-    print("---------- TODO ----------")
-    print("This module has not been implemented yet.")
-    print("TODO: Feature under development.")
-
-    input("\nPress ENTER to return...")
-
-
-def main_menu():
-    clear()
-
-    print("---------- CONCLAVE MENU ----------")
-    print("(1) PLAYERS")
-    print("(2) GAMEMASTERS")
-    print("(3) PARTIES")
-    print("(4) LOGS")
-    print("(0) EXIT")
-
-    option = input("\n *  Choose your option: ")
-
-    match option:
-        case "0":
-            option = 0
-        case "1":
-            option = 1
-        case "2":
-            option = 2
-        case "3":
-            option = 3
-        case "4":
-            option = 4
-        case _:
-            option = 1
-
-    return option
-
-
-def player_menu():
-    clear()
-
-    print("---------- PLAYERS ----------")
-    print("(1) NEW PLAYER")
-    print("(2) FIND PLAYER")
-    print("(3) UPDATE PLAYER")
-    print("(4) DELETE PLAYER")
-    print("(0) EXIT")
-
-    option = input("\n *  Choose your option: ")
-
-    match option:
-        case "0":
-            option = 0
-        case "1":
-            option = 1
-        case "2":
-            option = 2
-        case "3":
-            option = 3
-        case "4":
-            option = 4
-        case _:
-            option = 2
-
-    return option
-
-
-def gm_menu():
-    clear()
-
-    print("---------- GAMEMASTERS ----------")
-    print("(1) NEW GAMEMASTER")
-    print("(2) FIND GAMEMASTER")
-    print("(3) UPDATE GAMEMASTER")
-    print("(4) DELETE GAMEMASTER")
-    print("(0) EXIT")
-
-    option = input("\n *  Choose your option: ")
-
-    match option:
-        case "0":
-            option = 0
-        case "1":
-            option = 1
-        case "2":
-            option = 2
-        case "3":
-            option = 3
-        case "4":
-            option = 4
-        case _:
-            option = 2
-
-    return option
-
-
-def party_menu():
-    clear()
-
-    print("---------- PARTIES ----------")
-    print("(1) NEW PARTY")
-    print("(2) FIND PARTY")
-    print("(3) UPDATE PARTY")
-    print("(4) DELETE PARTY")
-    print("(0) EXIT")
-
-    option = input("\n *  Choose your option: ")
-
-    match option:
-        case "0":
-            option = 0
-        case "1":
-            option = 1
-        case "2":
-            option = 2
-        case "3":
-            option = 3
-        case "4":
-            option = 4
-        case _:
-            option = 2
-
-    return option
-
-
-def log_menu():
-    clear()
-
-    print("---------- CONCLAVE LOGS ----------")
-    print("(1) MODULE 1")
-    print("(2) MODULE 2")
-    print("(3) MODULE 3")
-    print("(4) MODULE 4")
-    print("(0) EXIT")
-
-    option = input("\n *  Choose your option: ")
-
-    match option:
-        case "0":
-            option = 0
-        case "1":
-            option = 1
-        case "2":
-            option = 2
-        case "3":
-            option = 3
-        case "4":
-            option = 4
-        case _:
-            option = 2
-
-    return option
-
-
-def input_name(msg):
-    name = input(msg)
-
-    while not validate_name(name):
-        print("Invalid name.\nTry again!\n")
-        name = input(msg)
-
-    return name
-
-
-def validate_name(name):
-    is_valid = False
-
-    if name:
-        is_valid = True
-    else:
-        is_valid = False
-
-    return is_valid
-
-
-def input_email(msg):
-    email = input(msg)
-
-    while not validate_name(email):
-        print("Invalid email.\nTry again!\n")
-        email = input(msg)
-
-    return email
-
-
-def validate_email(email):
-    is_valid = False
-
-    if "@" in email:
-        is_valid = True
-    else:
-        is_valid = False
-
-    return is_valid
 
 
 if __name__ == "__main__":
@@ -255,7 +40,7 @@ if __name__ == "__main__":
 
                 name = input_name("NAME: ")
                 email = input_email("EMAIL: ")
-                discord = input("DISCORD (e.g. @username): ")
+                discord = input_discord("DISCORD (e.g. @username): ")
                 created_at = datetime.now().isoformat()
 
                 database["players"][player_id] = {
