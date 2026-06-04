@@ -2,7 +2,6 @@ import utils.database as database
 import utils.helpers as helpers
 import utils.inputs as inputs
 import utils.interfaces as interfaces
-import utils.validation as validation
 from datetime import datetime
 
 
@@ -44,7 +43,7 @@ if __name__ == "__main__":
 
                 print(f"\nPlayer {player_id} created successfully!")
 
-                input("\nPress ENTER to continue...")
+                interfaces.wait()
 
             # FIND PLAYER
             elif menu_option == 2:
@@ -69,7 +68,7 @@ if __name__ == "__main__":
                 else:
                     print("\nPlayer not found!")
 
-                input("\nPress ENTER to continue...")
+                interfaces.wait()
 
             # UPDATE PLAYER
             elif menu_option == 3:
@@ -89,9 +88,9 @@ if __name__ == "__main__":
 
                         print("---------- UPDATE PLAYER ----------")
 
-                        name = input("NAME: ")
-                        email = input("EMAIL: ")
-                        discord = input("DISCORD: ")
+                        name = inputs.name("NAME: ")
+                        email = inputs.email("EMAIL: ")
+                        discord = inputs.discord("DISCORD: ")
 
                         database.data["players"][player_id]["name"] = name
                         database.data["players"][player_id]["email"] = email
@@ -104,7 +103,7 @@ if __name__ == "__main__":
                 else:
                     print("\nPlayer not found!")
 
-                input("\nPress ENTER to continue...")
+                interfaces.wait()
 
             # DELETE PLAYER
             elif menu_option == 4:
@@ -129,7 +128,7 @@ if __name__ == "__main__":
                 else:
                     print("\nPlayer not found!")
 
-                input("\nPress ENTER to continue...")
+                interfaces.wait()
 
         # GAMEMASTERS
         elif option == 2:
@@ -145,9 +144,9 @@ if __name__ == "__main__":
 
                 print(f"You are creating the gamemaster with ID {gm_id}.\n")
 
-                name = input("NAME: ")
-                email = input("EMAIL: ")
-                years_experience = int(input("YEARS OF EXPERIENCE (e.g. 2): "))
+                name = inputs.name("NAME: ")
+                email = inputs.email("EMAIL: ")
+                years_experience = inputs.years_experience("YEARS OF EXPERIENCE (e.g. 2): ")
                 created_at = datetime.now().isoformat()
 
                 database.data["gamemasters"][gm_id] = {
@@ -161,7 +160,7 @@ if __name__ == "__main__":
 
                 print("\nGamemaster created successfully!")
 
-                input("\nPress ENTER to continue...")
+                interfaces.wait()
 
             # FIND GAMEMASTER
             elif menu_option == 2:
@@ -186,7 +185,7 @@ if __name__ == "__main__":
                 else:
                     print("\nGamemaster not found!")
 
-                input("\nPress ENTER to continue...")
+                interfaces.wait()
 
             # UPDATE GAMEMASTER
             elif menu_option == 3:
@@ -206,9 +205,9 @@ if __name__ == "__main__":
 
                         print("---------- UPDATE GAMEMASTER ----------")
 
-                        name = input("NAME: ")
-                        email = input("EMAIL: ")
-                        years_experience = input("YEARS OF EXPERIENCE: ")
+                        name = inputs.name("NAME: ")
+                        email = inputs.email("EMAIL: ")
+                        years_experience = inputs.years_experience("YEARS OF EXPERIENCE: ")
 
                         database.data["gamemasters"][gm_id]["name"] = name
                         database.data["gamemasters"][gm_id]["email"] = email
@@ -221,7 +220,7 @@ if __name__ == "__main__":
                 else:
                     print("\nGamemaster not found!")
 
-                input("\nPress ENTER to continue...")
+                interfaces.wait()
 
             # DELETE GAMEMASTER
             elif menu_option == 4:
@@ -246,7 +245,7 @@ if __name__ == "__main__":
                 else:
                     print("\nGamemaster not found!")
 
-                input("\nPress ENTER to continue...")
+                interfaces.wait()
 
         # PARTIES
         elif option == 3:
@@ -267,7 +266,7 @@ if __name__ == "__main__":
                 if gamemaster_id not in database.data["gamemasters"]:
                     print("\nGamemaster not found!")
 
-                    input("\nPress ENTER to continue...")
+                    interfaces.wait()
                 else:
                     players = input("PLAYERS IDs (e.g. 1 3 5): ").split(" ")
 
@@ -287,7 +286,7 @@ if __name__ == "__main__":
 
                     print("\nParty created successfully!")
 
-                    input("\nPress ENTER to continue...")
+                    interfaces.wait()
 
             # FIND PARTY
             elif menu_option == 2:
@@ -316,7 +315,7 @@ if __name__ == "__main__":
                 else:
                     print("\nParty not found!")
 
-                input("\nPress ENTER to continue...")
+                interfaces.wait()
 
             # UPDATE PARTY
             elif menu_option == 3:
@@ -339,7 +338,7 @@ if __name__ == "__main__":
                         if gamemaster_id not in database.data["gamemasters"]:
                             print("\nGamemaster not found!")
 
-                            input("\nPress ENTER to continue...")
+                            interfaces.wait()
 
                             continue
 
@@ -362,7 +361,7 @@ if __name__ == "__main__":
                 else:
                     print("\nParty not found!")
 
-                input("\nPress ENTER to continue...")
+                interfaces.wait()
 
             # DELETE PARTY
             elif menu_option == 4:
@@ -387,7 +386,7 @@ if __name__ == "__main__":
                 else:
                     print("\nParty not found!")
 
-                input("\nPress ENTER to continue...")
+                interfaces.wait()
 
         # LOGS
         elif option == 4:

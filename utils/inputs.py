@@ -28,3 +28,13 @@ def discord(msg):
         username = input(msg)
 
     return username
+
+
+def years_experience(msg):
+    years = input(msg)
+
+    while not validation.years_experience(years):
+          print("Invalid number of years.\nTry again!\n")
+          years = input(msg)
+
+    return int(years)

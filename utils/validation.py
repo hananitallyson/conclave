@@ -24,3 +24,12 @@ def username(username):
         is_valid = True
 
     return is_valid
+
+
+def years_experience(years):
+    is_valid = False
+
+    if years.isdigit():
+        is_valid = True
+
+    return is_valid

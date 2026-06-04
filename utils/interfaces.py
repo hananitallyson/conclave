@@ -1,5 +1,10 @@
 from . import helpers
 
+
+def wait():
+    input("\nPress ENTER to continue...")
+
+
 def welcome():
     helpers.clear()
 
@@ -16,7 +21,7 @@ def welcome():
 ═══════════════════════════════════════════════════════════════════════
 """)
 
-    input("\nPress ENTER to continue...")
+    wait()
 
 
 def todo():
