@@ -403,5 +403,4 @@ if __name__ == "__main__":
                 interfaces.todo()
 
         elif option == 0:
-            print("\nExiting...\n")
-
+            interfaces.exit()

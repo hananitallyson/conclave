@@ -24,6 +24,10 @@ def welcome():
     wait()
 
 
+def exit():
+    print("\nExiting...\n")
+
+
 def todo():
     helpers.clear()
 
