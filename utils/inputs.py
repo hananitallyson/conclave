@@ -47,3 +47,19 @@ def id(msg):
         id = input(msg)
 
     return id
+
+def game(msg):
+    game = input(msg)
+
+    while not validation.game(game):
+        print("Invalid gamerule name.\nTry again!\n")
+
+    return game
+
+def players(msg):
+    players = input(msg)
+
+    while not validation.players([int(id) for id in players]):
+        print("Invalid players id.\nTry again!\n")
+
+    return players

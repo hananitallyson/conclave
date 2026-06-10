@@ -50,7 +50,7 @@ if __name__ == "__main__":
 
                 print("---------- FIND PLAYER ----------")
 
-                player_id = input("SEARCH BY PLAYER ID: ")
+                player_id = inputs.id("SEARCH BY PLAYER ID: ")
 
                 if player_id in database.data["players"]:
                     player = database.data["players"][player_id]
@@ -75,7 +75,7 @@ if __name__ == "__main__":
 
                 print("---------- UPDATE PLAYER ----------")
 
-                player_id = input("SELECT THE PLAYER ID: ")
+                player_id = inputs.id("SELECT THE PLAYER ID: ")
 
                 if player_id in database.data["players"]:
                     print(f"\nYOU CHOOSE {database.data['players'][player_id]['name']}")
@@ -340,7 +340,7 @@ if __name__ == "__main__":
                     yes = input("CONTINUE? (Y/N): ").upper()
 
                     if (yes == "Y") or (yes == ""):
-                        gamemaster_id = input("NEW GAMEMASTER ID: ")
+                        gamemaster_id = inputs.id("NEW GAMEMASTER ID: ")
 
                         if gamemaster_id not in database.data["gamemasters"]:
                             print("\nGamemaster not found!")
@@ -351,7 +351,7 @@ if __name__ == "__main__":
 
                         players = input("NEW PLAYERS IDs (e.g. 1 3 5): ").split(" ")
 
-                        game = input("NEW GAMERULES: ")
+                        game = inputs.game("NEW GAMERULES: ")
 
                         database.data["parties"][party_id] = {
                             "gamemaster": gamemaster_id,

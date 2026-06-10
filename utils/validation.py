@@ -42,3 +42,13 @@ def id(id):
         is_valid = True
 
     return is_valid
+
+
+def game(game):
+    is_valid = False
+    game = game.strip()
+
+    if game and len(game) >= 2:
+        is_valid = True
+
+    return is_valid
