@@ -38,3 +38,12 @@ def years_experience(msg):
           years = input(msg)
 
     return int(years)
+
+def id(msg):
+    id = input(msg)
+
+    while not validation.id(id):
+        print("Invalid id.\nTry again!\n")
+        id = input(msg)
+
+    return id

@@ -4,7 +4,6 @@ import utils.inputs as inputs
 import utils.interfaces as interfaces
 from datetime import datetime
 
-
 if __name__ == "__main__":
     option = ""
 
@@ -111,7 +110,7 @@ if __name__ == "__main__":
 
                 print("---------- DELETE PLAYER ----------")
 
-                player_id = input("SELECT THE PLAYER ID: ")
+                player_id = inputs.id("SELECT THE PLAYER ID: ")
 
                 if player_id in database.data["players"]:
                     print(f"\nYOU CHOOSE {database.data['players'][player_id]['name']}")
@@ -146,14 +145,16 @@ if __name__ == "__main__":
 
                 name = inputs.name("NAME: ")
                 email = inputs.email("EMAIL: ")
-                years_experience = inputs.years_experience("YEARS OF EXPERIENCE (e.g. 2): ")
+                years_experience = inputs.years_experience(
+                    "YEARS OF EXPERIENCE (e.g. 2): "
+                )
                 created_at = datetime.now().isoformat()
 
                 database.data["gamemasters"][gm_id] = {
                     "name": name,
                     "email": email,
                     "years_experience": years_experience,
-                    "created_at": created_at
+                    "created_at": created_at,
                 }
 
                 database.save()
@@ -168,7 +169,7 @@ if __name__ == "__main__":
 
                 print("---------- FIND GAMEMASTER ----------")
 
-                gm_id = input("SEARCH BY GAMEMASTER ID: ")
+                gm_id = inputs.id("SEARCH BY GAMEMASTER ID: ")
 
                 if gm_id in database.data["gamemasters"]:
                     gm = database.data["gamemasters"][gm_id]
@@ -193,7 +194,7 @@ if __name__ == "__main__":
 
                 print("---------- UPDATE GAMEMASTER ----------")
 
-                gm_id = input("SELECT THE GAMEMASTER ID: ")
+                gm_id = inputs.id("SELECT THE GAMEMASTER ID: ")
 
                 if gm_id in database.data["gamemasters"]:
                     print(f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}")
@@ -207,11 +208,15 @@ if __name__ == "__main__":
 
                         name = inputs.name("NAME: ")
                         email = inputs.email("EMAIL: ")
-                        years_experience = inputs.years_experience("YEARS OF EXPERIENCE: ")
+                        years_experience = inputs.years_experience(
+                            "YEARS OF EXPERIENCE: "
+                        )
 
                         database.data["gamemasters"][gm_id]["name"] = name
                         database.data["gamemasters"][gm_id]["email"] = email
-                        database.data["gamemasters"][gm_id]["years_experience"] = years_experience
+                        database.data["gamemasters"][gm_id][
+                            "years_experience"
+                        ] = years_experience
 
                         database.save()
 
@@ -228,7 +233,7 @@ if __name__ == "__main__":
 
                 print("---------- DELETE GAMEMASTER ----------")
 
-                gm_id = input("SELECT THE GAMEMASTER ID: ")
+                gm_id = inputs.id("SELECT THE GAMEMASTER ID: ")
 
                 if gm_id in database.data["gamemasters"]:
                     print(f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}")
@@ -261,7 +266,7 @@ if __name__ == "__main__":
 
                 print(f"You are creating the party with ID {party_id}.\n")
 
-                gamemaster_id = input("GAMEMASTER ID: ")
+                gamemaster_id = inputs.id("GAMEMASTER ID: ")
 
                 if gamemaster_id not in database.data["gamemasters"]:
                     print("\nGamemaster not found!")
@@ -279,7 +284,7 @@ if __name__ == "__main__":
                         "number_of_players": len(players),
                         "player_ids": players,
                         "game": game,
-                        "created_at": created_at
+                        "created_at": created_at,
                     }
 
                     database.save()
@@ -294,7 +299,7 @@ if __name__ == "__main__":
 
                 print("---------- FIND PARTY ----------")
 
-                party_id = input("SEARCH BY PARTY ID: ")
+                party_id = inputs.id("SEARCH BY PARTY ID: ")
 
                 if party_id in database.data["parties"]:
                     party = database.data["parties"][party_id]
@@ -304,7 +309,9 @@ if __name__ == "__main__":
                     print("---------- FIND PARTY ----------")
 
                     print(f"ID: {party_id}")
-                    print(f"GAMEMASTER: {database.data['gamemasters'][party['gamemaster_id']]['name']}")
+                    print(
+                        f"GAMEMASTER: {database.data['gamemasters'][party['gamemaster_id']]['name']}"
+                    )
                     print(f"GAME: {party['game']}")
                     print(f"NUMBER OF PLAYERS: {party['number_of_players']}")
                     print("PLAYERS:")
@@ -323,7 +330,7 @@ if __name__ == "__main__":
 
                 print("---------- UPDATE PARTY ----------")
 
-                party_id = input("SELECT THE PARTY ID: ")
+                party_id = inputs.id("SELECT THE PARTY ID: ")
 
                 created_at = database.data["parties"][party_id]["created_at"]
 
@@ -351,7 +358,7 @@ if __name__ == "__main__":
                             "number_of_players": len(players),
                             "players": players,
                             "game": game,
-                            "created_at": created_at
+                            "created_at": created_at,
                         }
 
                         database.save()
@@ -369,7 +376,7 @@ if __name__ == "__main__":
 
                 print("---------- DELETE PARTY ----------")
 
-                party_id = input("SELECT THE PARTY ID: ")
+                party_id = inputs.id("SELECT THE PARTY ID: ")
 
                 if party_id in database.data["parties"]:
                     print(f"\nYOU CHOOSE PARTY {party_id}")

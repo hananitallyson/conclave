@@ -33,3 +33,12 @@ def years_experience(years):
         is_valid = True
 
     return is_valid
+
+
+def id(id):
+    is_valid = False
+
+    if id.isdigit():
+        is_valid = True
+
+    return is_valid
