@@ -77,7 +77,7 @@ def game(game):
     is_valid = False
     game = game.strip()
 
-    if game and len(game) >= 2:
+    if game and len(game) >= 2 and len(game) <= 100:
         is_valid = True
 
     return is_valid
