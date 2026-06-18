@@ -399,7 +399,30 @@ if __name__ == "__main__":
         elif option == 4:
             menu_option = interfaces.log_menu()
 
-            if menu_option != 0:
+            if menu_option == 1:
+                helpers.clear()
+
+                print("---------- CONCLAVE PLAYERS ----------")
+                print(f"{'ID':<8} {'PLAYER':<20} {'EMAIL':<30} {'DISCORD':<20}")
+                print("=" * 85)
+
+                for player_id, player in database.data["players"].items():
+                    print(
+                        f"{player_id:<8} "
+                        f"{player['name']:<20} "
+                        f"{player['email']:<30} "
+                        f"{player['discord']:<20}"
+                    )
+
+                print("=" * 85)
+
+                interfaces.wait()
+
+            elif menu_option == 2:
+                interfaces.todo()
+            elif menu_option == 3:
+                interfaces.todo()
+            elif menu_option == 4:
                 interfaces.todo()
 
         elif option == 0:
