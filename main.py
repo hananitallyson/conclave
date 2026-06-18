@@ -442,31 +442,64 @@ if __name__ == "__main__":
                 helpers.clear()
 
                 print("---------- CONCLAVE PARTIES ----------\n")
-                game_chosen = inputs.game("WHICH GAME ARE YOU LOOKING FOR? ")
+                game_chosen = inputs.game("ENTER A GAME: ")
 
-                print(f"\n{'ID':<8} {'GAMEMASTER':<20} {'NUMBER OF PLAYERS':<30} {'PLAYERS':<20}")
-                print("=" * 85)
+                if game_chosen in [party["game"] for party in database.data["parties"].values()]:
+                    print(f"\n{'ID':<8} {'GAMEMASTER':<20} {'NUMBER OF PLAYERS':<30} {'PLAYERS':<20}")
+                    print("=" * 85)
 
-                for party_id, party in database.data["parties"].items():
-                    if game_chosen == party['game']:
-                      players = ", ".join(
-                          database.data["players"][player_id]["name"]
-                          for player_id in party["player_ids"]
-                      )
+                    for party_id, party in database.data["parties"].items():
+                        if game_chosen == party['game']:
+                          players = ", ".join(
+                              database.data["players"][player_id]["name"]
+                              for player_id in party["player_ids"]
+                          )
 
-                      print(
-                          f"{party_id:<8} "
-                          f"{database.data['gamemasters'][party['gamemaster_id']]['name']:<20} "
-                          f"{party['number_of_players']:<30} "
-                          f"{players:<20}"
-                      )
+                          print(
+                              f"{party_id:<8} "
+                              f"{database.data['gamemasters'][party['gamemaster_id']]['name']:<20} "
+                              f"{party['number_of_players']:<30} "
+                              f"{players:<20}"
+                          )
 
-                print("=" * 85)
+                    print("=" * 85)
+                else:
+                    print("\nThe game is not present in the database.")
 
                 interfaces.wait()
 
             elif menu_option == 4:
-                interfaces.todo()
+                helpers.clear()
+
+                print("---------- CONCLAVE PLAYERS & GAMEMASTERS BY DATE ----------\n")
+                date_filter = datetime.fromisoformat(
+                    input("CREATED AFTER (YYYY-MM-DD): ")
+                )
+
+                print(f"\n{'ID':<8} {'TYPE':<12} {'NAME':<20} {'CREATED AT':<20}")
+                print("=" * 65)
+
+                for player_id, player in database.data["players"].items():
+                    if datetime.fromisoformat(player["created_at"]) > date_filter:
+                        print(
+                            f"{player_id:<8} "
+                            f"{'Player':<12} "
+                            f"{player['name']:<20} "
+                            f"{player['created_at'][:19]:<20}"
+                        )
+                print("-" * 65)
+                for gm_id, gm in database.data["gamemasters"].items():
+                    if datetime.fromisoformat(gm["created_at"]) > date_filter:
+                        print(
+                            f"{gm_id:<8} "
+                            f"{'Gamemaster':<12} "
+                            f"{gm['name']:<20} "
+                            f"{gm['created_at'][:19]:<20}"
+                        )
+
+                print("=" * 65)
+
+                interfaces.wait()
 
         elif option == 0:
             interfaces.exit()
