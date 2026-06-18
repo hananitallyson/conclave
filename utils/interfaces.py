@@ -158,10 +158,10 @@ def log_menu():
     helpers.clear()
 
     print("---------- CONCLAVE LOGS ----------")
-    print("(1) MODULE 1")
-    print("(2) MODULE 2")
-    print("(3) MODULE 3")
-    print("(4) MODULE 4")
+    print("(1) LIST PLAYERS")
+    print("(2) LIST GAMEMASTERS")
+    print("(3) LIST PARTIES BY GAME")
+    print("(4) LIST BY CREATION DATE")
     print("(0) EXIT")
 
     option = input("\n *  Choose your option: ")
