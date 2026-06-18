@@ -1,4 +1,5 @@
-# Limit of 100 characters and only letters (no numbers or symbols)
+# Only letters and spaces,
+# and 2 to 100 characters.
 def name(name):
     is_valid = False
     name = name.strip()
@@ -17,12 +18,21 @@ def name(name):
     return is_valid
 
 
+# Must have one @, text before it,
+# and a dot in the domain.
 def email(email):
     is_valid = False
     email = email.strip()
 
-    if "@" in email and "." in email:
-        is_valid = True
+    if "@" in email:
+        parts = email.split("@")
+
+        if len(parts) == 2:
+            local = parts[0]
+            domain = parts[1]
+
+            if local and "." in domain:
+                is_valid = True
 
     return is_valid
 
