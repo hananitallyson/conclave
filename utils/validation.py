@@ -54,8 +54,9 @@ def username(username):
 # A number between 0 and 70.
 def years_experience(years):
     is_valid = False
+    years_int = int(years)
 
-    if years.isdigit():
+    if 0 <= years_int <= 70:
         is_valid = True
 
     return is_valid
