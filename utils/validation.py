@@ -37,12 +37,16 @@ def email(email):
     return is_valid
 
 
+# Starts with @, 2-32 letters, numbers or _.
 def username(username):
     is_valid = False
     username = username.strip()
 
-    if 2 <= len(username) <= 32 and username.startswith("@"):
-        is_valid = True
+    if username.startswith("@"):
+        handle = username[1:]
+
+        if 2 <= len(handle) <= 32 and handle.replace("_", "").isalnum():
+            is_valid = True
 
     return is_valid
 
