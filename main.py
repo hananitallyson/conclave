@@ -439,7 +439,32 @@ if __name__ == "__main__":
                 interfaces.wait()
 
             elif menu_option == 3:
-                interfaces.todo()
+                helpers.clear()
+
+                print("---------- CONCLAVE PARTIES ----------\n")
+                game_chosen = inputs.game("WHICH GAME ARE YOU LOOKING FOR? ")
+
+                print(f"\n{'ID':<8} {'GAMEMASTER':<20} {'NUMBER OF PLAYERS':<30} {'PLAYERS':<20}")
+                print("=" * 85)
+
+                for party_id, party in database.data["parties"].items():
+                    if game_chosen == party['game']:
+                      players = ", ".join(
+                          database.data["players"][player_id]["name"]
+                          for player_id in party["player_ids"]
+                      )
+
+                      print(
+                          f"{party_id:<8} "
+                          f"{database.data['gamemasters'][party['gamemaster_id']]['name']:<20} "
+                          f"{party['number_of_players']:<30} "
+                          f"{players:<20}"
+                      )
+
+                print("=" * 85)
+
+                interfaces.wait()
+
             elif menu_option == 4:
                 interfaces.todo()
 
