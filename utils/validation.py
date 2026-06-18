@@ -66,7 +66,7 @@ def years_experience(years):
 def id(id):
     is_valid = False
 
-    if id.isdigit():
+    if id.isdigit() and int(id) > 0:
         is_valid = True
 
     return is_valid
