@@ -51,6 +51,7 @@ def username(username):
     return is_valid
 
 
+# A number between 0 and 70.
 def years_experience(years):
     is_valid = False
 
@@ -60,6 +61,7 @@ def years_experience(years):
     return is_valid
 
 
+# A positive number above zero.
 def id(id):
     is_valid = False
 
@@ -69,6 +71,7 @@ def id(id):
     return is_valid
 
 
+# Text between 2 and 100 characters.
 def game(game):
     is_valid = False
     game = game.strip()
