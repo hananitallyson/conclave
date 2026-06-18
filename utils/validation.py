@@ -1,11 +1,21 @@
+# Limit of 100 characters and only letters (no numbers or symbols)
 def name(name):
     is_valid = False
     name = name.strip()
 
-    if name and len(name) >= 2:
-        is_valid = True
+    if name and len(name) >= 2 and len(name) <= 100:
+        words = name.split()
+        all_words_valid = True
+
+        for word in words:
+            if not word.isalpha():
+                all_words_valid = False
+
+        if all_words_valid:
+            is_valid = True
 
     return is_valid
+
 
 def email(email):
     is_valid = False
@@ -15,6 +25,7 @@ def email(email):
         is_valid = True
 
     return is_valid
+
 
 def username(username):
     is_valid = False
