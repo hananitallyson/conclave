@@ -402,7 +402,7 @@ if __name__ == "__main__":
             if menu_option == 1:
                 helpers.clear()
 
-                print("---------- CONCLAVE PLAYERS ----------")
+                print("---------- CONCLAVE PLAYERS ----------\n")
                 print(f"{'ID':<8} {'PLAYER':<20} {'EMAIL':<30} {'DISCORD':<20}")
                 print("=" * 85)
 
@@ -419,7 +419,25 @@ if __name__ == "__main__":
                 interfaces.wait()
 
             elif menu_option == 2:
-                interfaces.todo()
+                helpers.clear()
+
+                print("---------- CONCLAVE GAMEMASTERS ----------\n")
+                print(f"{'ID':<8} {'GAMEMASTER':<20} {'EMAIL':<30} {'EXPERIENCE':<20}")
+                print("=" * 85)
+
+                for gamemaster_id, gamemaster in database.data["gamemasters"].items():
+                    experience = f"{gamemaster['years_experience']} yrs"
+                    print(
+                        f"{gamemaster_id:<8} "
+                        f"{gamemaster['name']:<20} "
+                        f"{gamemaster['email']:<30} "
+                        f"{experience:<20}"
+                    )
+
+                print("=" * 85)
+
+                interfaces.wait()
+
             elif menu_option == 3:
                 interfaces.todo()
             elif menu_option == 4:
