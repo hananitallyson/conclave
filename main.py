@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
                 player_id = inputs.id("SEARCH BY PLAYER ID: ")
 
-                if player_id in database.data["players"]:
+                if player_id in database.data["players"] and database.data["players"][player_id]["is_deleted"] == False:
                     player = database.data["players"][player_id]
 
                     helpers.clear()
