@@ -486,8 +486,8 @@ if __name__ == "__main__":
                     game_chosen = entry.game("ENTER A GAME: ")
 
                     if game_chosen in [party["game"] for party in database.data["parties"].values()]:
-                        print(f"\n{'ID':<8} {'GAMEMASTER':<20} {'NUMBER OF PLAYERS':<30} {'PLAYERS':<20}")
-                        print("=" * 95)
+                        print(f"\n{'PARTY ID':<12} {'GAMEMASTER':<20} {'NUMBER OF PLAYERS':<30} {'PLAYERS':<20}")
+                        print("=" * 98)
 
                         for party_id, party in database.data["parties"].items():
                             if game_chosen == party["game"] and party["is_deleted"] == False:
@@ -497,13 +497,13 @@ if __name__ == "__main__":
                               )
 
                               print(
-                                  f"{party_id:<8} "
+                                  f"{party_id:<12} "
                                   f"{database.data['gamemasters'][party['gamemaster_id']]['name']:<20} "
                                   f"{party['number_of_players']:<30} "
                                   f"{players:<20}"
                               )
 
-                        print("=" * 95)
+                        print("=" * 98)
                     else:
                         print("\nThe game is not present in the database.")
 
