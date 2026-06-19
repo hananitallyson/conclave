@@ -15,350 +15,292 @@ if __name__ == "__main__":
         # PLAYERS
         if option == 1:
             menu_option = interfaces.player_menu()
-
-            # CREATE PLAYER
-            if menu_option == 1:
-                helpers.clear()
-
-                print("---------- CREATE PLAYER ----------")
-
-                player_id = str(len(database.data["players"]) + 1)
-
-                print(f"You are creating the player with ID {player_id}.\n")
-
-                name = inputs.name("NAME: ")
-                email = inputs.email("EMAIL: ")
-                discord = inputs.discord("DISCORD (e.g. @username): ")
-                created_at = datetime.now().isoformat()
-
-                database.data["players"][player_id] = {
-                    "name": name,
-                    "email": email,
-                    "discord": discord,
-                    "created_at": created_at,
-                    "is_deleted": False,
-                }
-
-                database.save()
-
-                print(f"\nPlayer {player_id} created successfully!")
-
-                interfaces.wait()
-
-            # FIND PLAYER
-            elif menu_option == 2:
-                helpers.clear()
-
-                print("---------- FIND PLAYER ----------")
-
-                player_id = inputs.id("SEARCH BY PLAYER ID: ")
-
-                if player_id in database.data["players"] and database.data["players"][player_id]["is_deleted"] == False:
-                    player = database.data["players"][player_id]
-
+            while menu_option != 0:
+                # CREATE PLAYER
+                if menu_option == 1:
                     helpers.clear()
 
-                    print("---------- FIND PLAYER ----------")
+                    print("---------- CREATE PLAYER ----------")
 
-                    print(f"ID: {player_id}")
-                    print(f"NAME: {player['name']}")
-                    print(f"EMAIL: {player['email']}")
-                    print(f"DISCORD: {player['discord']}")
+                    player_id = str(len(database.data["players"]) + 1)
 
-                else:
-                    print("\nPlayer not found!")
+                    print(f"You are creating the player with ID {player_id}.\n")
 
-                interfaces.wait()
-
-            # UPDATE PLAYER
-            elif menu_option == 3:
-                helpers.clear()
-
-                print("---------- UPDATE PLAYER ----------")
-
-                player_id = inputs.id("SELECT THE PLAYER ID: ")
-
-                if player_id in database.data["players"] and database.data["players"][player_id]["is_deleted"] == False:
-                    print(f"\nYOU CHOOSE {database.data['players'][player_id]['name']}")
-
-                    yes = input("CONTINUE? (Y/N): ").upper()
-
-                    if (yes == "Y") or (yes == ""):
-                        helpers.clear()
-
-                        print("---------- UPDATE PLAYER ----------")
-
-                        name = inputs.name("NAME: ")
-                        email = inputs.email("EMAIL: ")
-                        discord = inputs.discord("DISCORD: ")
-
-                        database.data["players"][player_id]["name"] = name
-                        database.data["players"][player_id]["email"] = email
-                        database.data["players"][player_id]["discord"] = discord
-
-                        database.save()
-
-                        print("\nPlayer updated successfully!")
-
-                else:
-                    print("\nPlayer not found!")
-
-                interfaces.wait()
-
-            # DELETE PLAYER
-            elif menu_option == 4:
-                helpers.clear()
-
-                print("---------- DELETE PLAYER ----------")
-
-                player_id = inputs.id("SELECT THE PLAYER ID: ")
-
-                if player_id in database.data["players"] and database.data["players"][player_id]["is_deleted"] == False:
-                    print(f"\nYOU CHOOSE {database.data['players'][player_id]['name']}")
-
-                    yes = input("CONTINUE? (Y/N): ").upper()
-
-                    if (yes == "Y") or (yes == ""):
-                        database.data["players"][player_id]["is_deleted"] = True
-
-                        database.save()
-
-                        print("\nPlayer deleted successfully!")
-
-                else:
-                    print("\nPlayer not found!")
-
-                interfaces.wait()
-
-        # GAMEMASTERS
-        elif option == 2:
-            menu_option = interfaces.gm_menu()
-
-            # CREATE GAMEMASTER
-            if menu_option == 1:
-                helpers.clear()
-
-                print("---------- CREATE GAMEMASTER ----------")
-
-                gm_id = str(len(database.data["gamemasters"]) + 1)
-
-                print(f"You are creating the gamemaster with ID {gm_id}.\n")
-
-                name = inputs.name("NAME: ")
-                email = inputs.email("EMAIL: ")
-                years_experience = inputs.years_experience(
-                    "YEARS OF EXPERIENCE (e.g. 2): "
-                )
-                created_at = datetime.now().isoformat()
-
-                database.data["gamemasters"][gm_id] = {
-                    "name": name,
-                    "email": email,
-                    "years_experience": years_experience,
-                    "created_at": created_at,
-                    "is_deleted": False,
-                }
-
-                database.save()
-
-                print("\nGamemaster created successfully!")
-
-                interfaces.wait()
-
-            # FIND GAMEMASTER
-            elif menu_option == 2:
-                helpers.clear()
-
-                print("---------- FIND GAMEMASTER ----------")
-
-                gm_id = inputs.id("SEARCH BY GAMEMASTER ID: ")
-
-                if gm_id in database.data["gamemasters"] and database.data["gamemasters"][gm_id]["is_deleted"] == False:
-                    gm = database.data["gamemasters"][gm_id]
-
-                    helpers.clear()
-
-                    print("---------- FIND GAMEMASTER ----------")
-
-                    print(f"ID: {gm_id}")
-                    print(f"NAME: {gm['name']}")
-                    print(f"EMAIL: {gm['email']}")
-                    print(f"YEARS OF EXPERIENCE: {gm['years_experience']}")
-
-                else:
-                    print("\nGamemaster not found!")
-
-                interfaces.wait()
-
-            # UPDATE GAMEMASTER
-            elif menu_option == 3:
-                helpers.clear()
-
-                print("---------- UPDATE GAMEMASTER ----------")
-
-                gm_id = inputs.id("SELECT THE GAMEMASTER ID: ")
-
-                if gm_id in database.data["gamemasters"] and database.data["gamemasters"][gm_id]["is_deleted"] == False:
-                    print(f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}")
-
-                    yes = input("CONTINUE? (Y/N): ").upper()
-
-                    if (yes == "Y") or (yes == ""):
-                        helpers.clear()
-
-                        print("---------- UPDATE GAMEMASTER ----------")
-
-                        name = inputs.name("NAME: ")
-                        email = inputs.email("EMAIL: ")
-                        years_experience = inputs.years_experience(
-                            "YEARS OF EXPERIENCE: "
-                        )
-
-                        database.data["gamemasters"][gm_id]["name"] = name
-                        database.data["gamemasters"][gm_id]["email"] = email
-                        database.data["gamemasters"][gm_id][
-                            "years_experience"
-                        ] = years_experience
-
-                        database.save()
-
-                        print("\nGamemaster updated successfully!")
-
-                else:
-                    print("\nGamemaster not found!")
-
-                interfaces.wait()
-
-            # DELETE GAMEMASTER
-            elif menu_option == 4:
-                helpers.clear()
-
-                print("---------- DELETE GAMEMASTER ----------")
-
-                gm_id = inputs.id("SELECT THE GAMEMASTER ID: ")
-
-                if gm_id in database.data["gamemasters"] and database.data["gamemasters"][gm_id]["is_deleted"] == False:
-                    print(f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}")
-
-                    yes = input("CONTINUE? (Y/N): ").upper()
-
-                    if (yes == "Y") or (yes == ""):
-                        database.data["gamemasters"][gm_id]["is_deleted"] = True
-
-                        database.save()
-
-                        print("\nGamemaster deleted successfully!")
-
-                else:
-                    print("\nGamemaster not found!")
-
-                interfaces.wait()
-
-        # PARTIES
-        elif option == 3:
-            menu_option = interfaces.party_menu()
-
-            # CREATE PARTY
-            if menu_option == 1:
-                helpers.clear()
-
-                print("---------- CREATE PARTY ----------")
-
-                party_id = str(len(database.data["parties"]) + 1)
-
-                print(f"You are creating the party with ID {party_id}.\n")
-
-                gamemaster_id = inputs.id("GAMEMASTER ID: ")
-
-                if gamemaster_id not in database.data["gamemasters"]:
-                    print("\nGamemaster not found!")
-
-                    interfaces.wait()
-                else:
-                    players = input("PLAYERS IDs (e.g. 1 3 5): ").split(" ")
-
-                    game = input("GAMERULES: ")
-
+                    name = inputs.name("NAME: ")
+                    email = inputs.email("EMAIL: ")
+                    discord = inputs.discord("DISCORD (e.g. @username): ")
                     created_at = datetime.now().isoformat()
 
-                    database.data["parties"][party_id] = {
-                        "gamemaster_id": gamemaster_id,
-                        "number_of_players": len(players),
-                        "player_ids": players,
-                        "game": game,
+                    database.data["players"][player_id] = {
+                        "name": name,
+                        "email": email,
+                        "discord": discord,
                         "created_at": created_at,
                         "is_deleted": False,
                     }
 
                     database.save()
 
-                    print("\nParty created successfully!")
+                    print(f"\nPlayer {player_id} created successfully!")
 
                     interfaces.wait()
 
-            # FIND PARTY
-            elif menu_option == 2:
-                helpers.clear()
+                    menu_option = interfaces.player_menu()
 
-                print("---------- FIND PARTY ----------")
-
-                party_id = inputs.id("SEARCH BY PARTY ID: ")
-
-                if party_id in database.data["parties"] and database.data["parties"][party_id]["is_deleted"] == False:
-                    party = database.data["parties"][party_id]
-
+                # FIND PLAYER
+                elif menu_option == 2:
                     helpers.clear()
 
-                    print("---------- FIND PARTY ----------")
+                    print("---------- FIND PLAYER ----------")
 
-                    print(f"ID: {party_id}")
-                    print(
-                        f"GAMEMASTER: {database.data['gamemasters'][party['gamemaster_id']]['name']}"
-                    )
-                    print(f"GAME: {party['game']}")
-                    print(f"NUMBER OF PLAYERS: {party['number_of_players']}")
-                    print("PLAYERS:")
-                    for player_id in party["player_ids"]:
+                    player_id = inputs.id("SEARCH BY PLAYER ID: ")
+
+                    if player_id in database.data["players"] and database.data["players"][player_id]["is_deleted"] == False:
                         player = database.data["players"][player_id]
-                        print(f"- {player['name']} ({player['discord']})")
 
-                else:
-                    print("\nParty not found!")
+                        helpers.clear()
 
-                interfaces.wait()
+                        print("---------- FIND PLAYER ----------")
 
-            # UPDATE PARTY
-            elif menu_option == 3:
-                helpers.clear()
+                        print(f"ID: {player_id}")
+                        print(f"NAME: {player['name']}")
+                        print(f"EMAIL: {player['email']}")
+                        print(f"DISCORD: {player['discord']}")
 
-                print("---------- UPDATE PARTY ----------")
+                    else:
+                        print("\nPlayer not found!")
 
-                party_id = inputs.id("SELECT THE PARTY ID: ")
+                    interfaces.wait()
 
-                if party_id in database.data["parties"] and database.data["parties"][party_id]["is_deleted"] == False:
-                    print(f"\nYOU CHOOSE PARTY {party_id}")
+                    menu_option = interfaces.player_menu()
 
-                    yes = input("CONTINUE? (Y/N): ").upper()
+                # UPDATE PLAYER
+                elif menu_option == 3:
+                    helpers.clear()
 
-                    if (yes == "Y") or (yes == ""):
-                        created_at = database.data["parties"][party_id]["created_at"]
-                        gamemaster_id = inputs.id("\nNEW GAMEMASTER ID: ")
+                    print("---------- UPDATE PLAYER ----------")
 
-                        if gamemaster_id not in database.data["gamemasters"]:
-                            print("\nGamemaster not found!")
+                    player_id = inputs.id("SELECT THE PLAYER ID: ")
 
-                            interfaces.wait()
+                    if player_id in database.data["players"] and database.data["players"][player_id]["is_deleted"] == False:
+                        print(f"\nYOU CHOOSE {database.data['players'][player_id]['name']}")
 
-                            continue
+                        yes = input("CONTINUE? (Y/N): ").upper()
 
-                        players = input("NEW PLAYERS IDs (e.g. 1 3 5): ").split(" ")
+                        if (yes == "Y") or (yes == ""):
+                            helpers.clear()
 
-                        game = inputs.game("NEW GAMERULES: ")
+                            print("---------- UPDATE PLAYER ----------")
+
+                            name = inputs.name("NAME: ")
+                            email = inputs.email("EMAIL: ")
+                            discord = inputs.discord("DISCORD: ")
+
+                            database.data["players"][player_id]["name"] = name
+                            database.data["players"][player_id]["email"] = email
+                            database.data["players"][player_id]["discord"] = discord
+
+                            database.save()
+
+                            print("\nPlayer updated successfully!")
+
+                    else:
+                        print("\nPlayer not found!")
+
+                    interfaces.wait()
+
+                    menu_option = interfaces.player_menu()
+
+                # DELETE PLAYER
+                elif menu_option == 4:
+                    helpers.clear()
+
+                    print("---------- DELETE PLAYER ----------")
+
+                    player_id = inputs.id("SELECT THE PLAYER ID: ")
+
+                    if player_id in database.data["players"] and database.data["players"][player_id]["is_deleted"] == False:
+                        print(f"\nYOU CHOOSE {database.data['players'][player_id]['name']}")
+
+                        yes = input("CONTINUE? (Y/N): ").upper()
+
+                        if (yes == "Y") or (yes == ""):
+                            database.data["players"][player_id]["is_deleted"] = True
+
+                            database.save()
+
+                            print("\nPlayer deleted successfully!")
+
+                    else:
+                        print("\nPlayer not found!")
+
+                    interfaces.wait()
+
+                    menu_option = interfaces.player_menu()
+
+        # GAMEMASTERS
+        elif option == 2:
+            menu_option = interfaces.gm_menu()
+            while menu_option != 0:
+                # CREATE GAMEMASTER
+                if menu_option == 1:
+                    helpers.clear()
+
+                    print("---------- CREATE GAMEMASTER ----------")
+
+                    gm_id = str(len(database.data["gamemasters"]) + 1)
+
+                    print(f"You are creating the gamemaster with ID {gm_id}.\n")
+
+                    name = inputs.name("NAME: ")
+                    email = inputs.email("EMAIL: ")
+                    years_experience = inputs.years_experience(
+                        "YEARS OF EXPERIENCE (e.g. 2): "
+                    )
+                    created_at = datetime.now().isoformat()
+
+                    database.data["gamemasters"][gm_id] = {
+                        "name": name,
+                        "email": email,
+                        "years_experience": years_experience,
+                        "created_at": created_at,
+                        "is_deleted": False,
+                    }
+
+                    database.save()
+
+                    print("\nGamemaster created successfully!")
+
+                    interfaces.wait()
+
+                    menu_option = interfaces.gm_menu()
+
+                # FIND GAMEMASTER
+                elif menu_option == 2:
+                    helpers.clear()
+
+                    print("---------- FIND GAMEMASTER ----------")
+
+                    gm_id = inputs.id("SEARCH BY GAMEMASTER ID: ")
+
+                    if gm_id in database.data["gamemasters"] and database.data["gamemasters"][gm_id]["is_deleted"] == False:
+                        gm = database.data["gamemasters"][gm_id]
+
+                        helpers.clear()
+
+                        print("---------- FIND GAMEMASTER ----------")
+
+                        print(f"ID: {gm_id}")
+                        print(f"NAME: {gm['name']}")
+                        print(f"EMAIL: {gm['email']}")
+                        print(f"YEARS OF EXPERIENCE: {gm['years_experience']}")
+
+                    else:
+                        print("\nGamemaster not found!")
+
+                    interfaces.wait()
+
+                    menu_option = interfaces.gm_menu()
+
+                # UPDATE GAMEMASTER
+                elif menu_option == 3:
+                    helpers.clear()
+
+                    print("---------- UPDATE GAMEMASTER ----------")
+
+                    gm_id = inputs.id("SELECT THE GAMEMASTER ID: ")
+
+                    if gm_id in database.data["gamemasters"] and database.data["gamemasters"][gm_id]["is_deleted"] == False:
+                        print(f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}")
+
+                        yes = input("CONTINUE? (Y/N): ").upper()
+
+                        if (yes == "Y") or (yes == ""):
+                            helpers.clear()
+
+                            print("---------- UPDATE GAMEMASTER ----------")
+
+                            name = inputs.name("NAME: ")
+                            email = inputs.email("EMAIL: ")
+                            years_experience = inputs.years_experience(
+                                "YEARS OF EXPERIENCE: "
+                            )
+
+                            database.data["gamemasters"][gm_id]["name"] = name
+                            database.data["gamemasters"][gm_id]["email"] = email
+                            database.data["gamemasters"][gm_id][
+                                "years_experience"
+                            ] = years_experience
+
+                            database.save()
+
+                            print("\nGamemaster updated successfully!")
+
+                    else:
+                        print("\nGamemaster not found!")
+
+                    interfaces.wait()
+
+                    menu_option = interfaces.gm_menu()
+
+                # DELETE GAMEMASTER
+                elif menu_option == 4:
+                    helpers.clear()
+
+                    print("---------- DELETE GAMEMASTER ----------")
+
+                    gm_id = inputs.id("SELECT THE GAMEMASTER ID: ")
+
+                    if gm_id in database.data["gamemasters"] and database.data["gamemasters"][gm_id]["is_deleted"] == False:
+                        print(f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}")
+
+                        yes = input("CONTINUE? (Y/N): ").upper()
+
+                        if (yes == "Y") or (yes == ""):
+                            database.data["gamemasters"][gm_id]["is_deleted"] = True
+
+                            database.save()
+
+                            print("\nGamemaster deleted successfully!")
+
+                    else:
+                        print("\nGamemaster not found!")
+
+                    interfaces.wait()
+
+                    menu_option = interfaces.gm_menu()
+
+        # PARTIES
+        elif option == 3:
+            menu_option = interfaces.party_menu()
+            while menu_option != 0:
+                # CREATE PARTY
+                if menu_option == 1:
+                    helpers.clear()
+
+                    print("---------- CREATE PARTY ----------")
+
+                    party_id = str(len(database.data["parties"]) + 1)
+
+                    print(f"You are creating the party with ID {party_id}.\n")
+
+                    gamemaster_id = inputs.id("GAMEMASTER ID: ")
+
+                    if gamemaster_id not in database.data["gamemasters"]:
+                        print("\nGamemaster not found!")
+
+                        interfaces.wait()
+                    else:
+                        players = input("PLAYERS IDs (e.g. 1 3 5): ").split(" ")
+
+                        game = input("GAMERULES: ")
+
+                        created_at = datetime.now().isoformat()
 
                         database.data["parties"][party_id] = {
-                            "gamemaster": gamemaster_id,
+                            "gamemaster_id": gamemaster_id,
                             "number_of_players": len(players),
-                            "players": players,
+                            "player_ids": players,
                             "game": game,
                             "created_at": created_at,
                             "is_deleted": False,
@@ -366,174 +308,266 @@ if __name__ == "__main__":
 
                         database.save()
 
-                        print("\nParty updated successfully!")
+                        print("\nParty created successfully!")
 
-                else:
-                    print("\nParty not found!")
+                        interfaces.wait()
 
-                interfaces.wait()
+                        menu_option = interfaces.party_menu()
 
-            # DELETE PARTY
-            elif menu_option == 4:
-                helpers.clear()
+                # FIND PARTY
+                elif menu_option == 2:
+                    helpers.clear()
 
-                print("---------- DELETE PARTY ----------")
+                    print("---------- FIND PARTY ----------")
 
-                party_id = inputs.id("SELECT THE PARTY ID: ")
+                    party_id = inputs.id("SEARCH BY PARTY ID: ")
 
-                if party_id in database.data["parties"] and database.data["parties"][party_id]["is_deleted"] == False:
-                    print(f"\nYOU CHOOSE PARTY {party_id}")
+                    if party_id in database.data["parties"] and database.data["parties"][party_id]["is_deleted"] == False:
+                        party = database.data["parties"][party_id]
 
-                    yes = input("CONTINUE? (Y/N): ").upper()
+                        helpers.clear()
 
-                    if (yes == "Y") or (yes == ""):
-                        database.data["parties"][party_id]["is_deleted"] = True
+                        print("---------- FIND PARTY ----------")
 
-                        database.save()
+                        print(f"ID: {party_id}")
+                        print(
+                            f"GAMEMASTER: {database.data['gamemasters'][party['gamemaster_id']]['name']}"
+                        )
+                        print(f"GAME: {party['game']}")
+                        print(f"NUMBER OF PLAYERS: {party['number_of_players']}")
+                        print("PLAYERS:")
+                        for player_id in party["player_ids"]:
+                            player = database.data["players"][player_id]
+                            print(f"- {player['name']} ({player['discord']})")
 
-                        print("\nParty deleted successfully!")
+                    else:
+                        print("\nParty not found!")
 
-                else:
-                    print("\nParty not found!")
+                    interfaces.wait()
 
-                interfaces.wait()
+                    menu_option = interfaces.party_menu()
+
+                # UPDATE PARTY
+                elif menu_option == 3:
+                    helpers.clear()
+
+                    print("---------- UPDATE PARTY ----------")
+
+                    party_id = inputs.id("SELECT THE PARTY ID: ")
+
+                    if party_id in database.data["parties"] and database.data["parties"][party_id]["is_deleted"] == False:
+                        print(f"\nYOU CHOOSE PARTY {party_id}")
+
+                        yes = input("CONTINUE? (Y/N): ").upper()
+
+                        if (yes == "Y") or (yes == ""):
+                            created_at = database.data["parties"][party_id]["created_at"]
+                            gamemaster_id = inputs.id("\nNEW GAMEMASTER ID: ")
+
+                            if gamemaster_id not in database.data["gamemasters"]:
+                                print("\nGamemaster not found!")
+
+                                interfaces.wait()
+
+                                continue
+
+                            players = input("NEW PLAYERS IDs (e.g. 1 3 5): ").split(" ")
+
+                            game = inputs.game("NEW GAMERULES: ")
+
+                            database.data["parties"][party_id] = {
+                                "gamemaster": gamemaster_id,
+                                "number_of_players": len(players),
+                                "players": players,
+                                "game": game,
+                                "created_at": created_at,
+                                "is_deleted": False,
+                            }
+
+                            database.save()
+
+                            print("\nParty updated successfully!")
+
+                    else:
+                        print("\nParty not found!")
+
+                    interfaces.wait()
+
+                    menu_option = interfaces.party_menu()
+
+                # DELETE PARTY
+                elif menu_option == 4:
+                    helpers.clear()
+
+                    print("---------- DELETE PARTY ----------")
+
+                    party_id = inputs.id("SELECT THE PARTY ID: ")
+
+                    if party_id in database.data["parties"] and database.data["parties"][party_id]["is_deleted"] == False:
+                        print(f"\nYOU CHOOSE PARTY {party_id}")
+
+                        yes = input("CONTINUE? (Y/N): ").upper()
+
+                        if (yes == "Y") or (yes == ""):
+                            database.data["parties"][party_id]["is_deleted"] = True
+
+                            database.save()
+
+                            print("\nParty deleted successfully!")
+
+                    else:
+                        print("\nParty not found!")
+
+                    interfaces.wait()
+
+                    menu_option = interfaces.party_menu()
 
         # LOGS
         elif option == 4:
             menu_option = interfaces.log_menu()
+            while menu_option != 0:
+                if menu_option == 1:
+                    helpers.clear()
 
-            if menu_option == 1:
-                helpers.clear()
-
-                print("---------- CONCLAVE PLAYERS ----------\n")
-                print(f"{'ID':<8} {'PLAYER':<20} {'EMAIL':<30} {'DISCORD':<20}")
-                print("=" * 85)
-
-                for player_id, player in database.data["players"].items():
-                    print(
-                        f"{player_id:<8} "
-                        f"{player['name']:<20} "
-                        f"{player['email']:<30} "
-                        f"{player['discord']:<20}"
-                    )
-
-                print("=" * 85)
-
-                interfaces.wait()
-
-            elif menu_option == 2:
-                helpers.clear()
-
-                print("---------- CONCLAVE GAMEMASTERS ----------\n")
-                print(f"{'ID':<8} {'GAMEMASTER':<20} {'EMAIL':<30} {'EXPERIENCE':<20}")
-                print("=" * 85)
-
-                for gamemaster_id, gamemaster in database.data["gamemasters"].items():
-                    experience = f"{gamemaster['years_experience']} yrs"
-                    print(
-                        f"{gamemaster_id:<8} "
-                        f"{gamemaster['name']:<20} "
-                        f"{gamemaster['email']:<30} "
-                        f"{experience:<20}"
-                    )
-
-                print("=" * 85)
-
-                interfaces.wait()
-
-            elif menu_option == 3:
-                helpers.clear()
-
-                print("---------- CONCLAVE PARTIES ----------\n")
-                game_chosen = inputs.game("ENTER A GAME: ")
-
-                if game_chosen in [party["game"] for party in database.data["parties"].values()]:
-                    print(f"\n{'ID':<8} {'GAMEMASTER':<20} {'NUMBER OF PLAYERS':<30} {'PLAYERS':<20}")
+                    print("---------- CONCLAVE PLAYERS ----------\n")
+                    print(f"{'ID':<8} {'PLAYER':<20} {'EMAIL':<30} {'DISCORD':<20}")
                     print("=" * 85)
 
-                    for party_id, party in database.data["parties"].items():
-                        if game_chosen == party['game']:
-                          players = ", ".join(
-                              database.data["players"][player_id]["name"]
-                              for player_id in party["player_ids"]
-                          )
-
-                          print(
-                              f"{party_id:<8} "
-                              f"{database.data['gamemasters'][party['gamemaster_id']]['name']:<20} "
-                              f"{party['number_of_players']:<30} "
-                              f"{players:<20}"
-                          )
-
-                    print("=" * 85)
-                else:
-                    print("\nThe game is not present in the database.")
-
-                interfaces.wait()
-
-            elif menu_option == 4:
-                helpers.clear()
-
-                print("---------- CONCLAVE PLAYERS & GAMEMASTERS BY DATE ----------\n")
-                date_filter = datetime.fromisoformat(
-                    input("CREATED FROM (YYYY-MM-DD): ")
-                )
-
-                print(f"\n{'ID':<8} {'TYPE':<12} {'NAME':<20} {'CREATED AT':<20}")
-                print("=" * 65)
-
-                for player_id, player in database.data["players"].items():
-                    if datetime.fromisoformat(player["created_at"]) >= date_filter:
+                    for player_id, player in database.data["players"].items():
                         print(
                             f"{player_id:<8} "
-                            f"{'Player':<12} "
                             f"{player['name']:<20} "
-                            f"{player['created_at'][:19]:<20}"
+                            f"{player['email']:<30} "
+                            f"{player['discord']:<20}"
                         )
-                print("-" * 65)
-                for gm_id, gm in database.data["gamemasters"].items():
-                    if datetime.fromisoformat(gm["created_at"]) >= date_filter:
+
+                    print("=" * 85)
+
+                    interfaces.wait()
+
+                    menu_option = interfaces.log_menu()
+
+                elif menu_option == 2:
+                    helpers.clear()
+
+                    print("---------- CONCLAVE GAMEMASTERS ----------\n")
+                    print(f"{'ID':<8} {'GAMEMASTER':<20} {'EMAIL':<30} {'EXPERIENCE':<20}")
+                    print("=" * 85)
+
+                    for gamemaster_id, gamemaster in database.data["gamemasters"].items():
+                        experience = f"{gamemaster['years_experience']} yrs"
                         print(
-                            f"{gm_id:<8} "
-                            f"{'Gamemaster':<12} "
-                            f"{gm['name']:<20} "
-                            f"{gm['created_at'][:19]:<20}"
+                            f"{gamemaster_id:<8} "
+                            f"{gamemaster['name']:<20} "
+                            f"{gamemaster['email']:<30} "
+                            f"{experience:<20}"
                         )
 
-                print("=" * 65)
+                    print("=" * 85)
 
-                interfaces.wait()
+                    interfaces.wait()
 
-            elif menu_option == 5:
-                helpers.clear()
+                    menu_option = interfaces.log_menu()
 
-                print("---------- CONCLAVE PLAYERS BY GAMEMASTER ----------\n")
+                elif menu_option == 3:
+                    helpers.clear()
 
-                gm_id = inputs.id("ENTER GAMEMASTER ID: ")
+                    print("---------- CONCLAVE PARTIES ----------\n")
+                    game_chosen = inputs.game("ENTER A GAME: ")
 
-                if gm_id not in database.data["gamemasters"]:
-                    print("\nGamemaster not found!")
-                else:
-                    gm = database.data["gamemasters"][gm_id]
+                    if game_chosen in [party["game"] for party in database.data["parties"].values()]:
+                        print(f"\n{'ID':<8} {'GAMEMASTER':<20} {'NUMBER OF PLAYERS':<30} {'PLAYERS':<20}")
+                        print("=" * 85)
 
-                    print(f"\nGamemaster: {gm['name']}\n")
-                    print(f"{'PLAYER':<20} {'PARTY ID':<10}")
-                    print("=" * 35)
+                        for party_id, party in database.data["parties"].items():
+                            if game_chosen == party['game']:
+                              players = ", ".join(
+                                  database.data["players"][player_id]["name"]
+                                  for player_id in party["player_ids"]
+                              )
 
-                    found = False
-                    for party_id, party in database.data["parties"].items():
-                        if party["gamemaster_id"] == gm_id:
-                            found = True
-                            for player_id in party["player_ids"]:
-                                name = database.data["players"][player_id]["name"]
-                                print(f"{name:<20} {party_id:<10}")
+                              print(
+                                  f"{party_id:<8} "
+                                  f"{database.data['gamemasters'][party['gamemaster_id']]['name']:<20} "
+                                  f"{party['number_of_players']:<30} "
+                                  f"{players:<20}"
+                              )
 
-                    if not found:
-                        print("No parties found for this gamemaster.")
+                        print("=" * 85)
+                    else:
+                        print("\nThe game is not present in the database.")
 
-                    print("=" * 35)
+                    interfaces.wait()
 
-                interfaces.wait()
+                    menu_option = interfaces.log_menu()
+
+                elif menu_option == 4:
+                    helpers.clear()
+
+                    print("---------- CONCLAVE PLAYERS & GAMEMASTERS BY DATE ----------\n")
+                    date_filter = datetime.fromisoformat(
+                        input("CREATED FROM (YYYY-MM-DD): ")
+                    )
+
+                    print(f"\n{'ID':<8} {'TYPE':<12} {'NAME':<20} {'CREATED AT':<20}")
+                    print("=" * 65)
+
+                    for player_id, player in database.data["players"].items():
+                        if datetime.fromisoformat(player["created_at"]) >= date_filter:
+                            print(
+                                f"{player_id:<8} "
+                                f"{'Player':<12} "
+                                f"{player['name']:<20} "
+                                f"{player['created_at'][:19]:<20}"
+                            )
+                    print("-" * 65)
+                    for gm_id, gm in database.data["gamemasters"].items():
+                        if datetime.fromisoformat(gm["created_at"]) >= date_filter:
+                            print(
+                                f"{gm_id:<8} "
+                                f"{'Gamemaster':<12} "
+                                f"{gm['name']:<20} "
+                                f"{gm['created_at'][:19]:<20}"
+                            )
+
+                    print("=" * 65)
+
+                    interfaces.wait()
+
+                    menu_option = interfaces.log_menu()
+
+                elif menu_option == 5:
+                    helpers.clear()
+
+                    print("---------- CONCLAVE PLAYERS BY GAMEMASTER ----------\n")
+
+                    gm_id = inputs.id("ENTER GAMEMASTER ID: ")
+
+                    if gm_id not in database.data["gamemasters"]:
+                        print("\nGamemaster not found!")
+                    else:
+                        gm = database.data["gamemasters"][gm_id]
+
+                        print(f"\nGamemaster: {gm['name']}\n")
+                        print(f"{'PLAYER':<20} {'PARTY ID':<10}")
+                        print("=" * 35)
+
+                        found = False
+                        for party_id, party in database.data["parties"].items():
+                            if party["gamemaster_id"] == gm_id:
+                                found = True
+                                for player_id in party["player_ids"]:
+                                    name = database.data["players"][player_id]["name"]
+                                    print(f"{name:<20} {party_id:<10}")
+
+                        if not found:
+                            print("No parties found for this gamemaster.")
+
+                        print("=" * 35)
+
+                    interfaces.wait()
+
+                    menu_option = interfaces.log_menu()
 
         elif option == 0:
             interfaces.exit()
