@@ -47,7 +47,7 @@
         "17": { "gamemaster_id": "9", "number_of_players": 3, "player_ids": ["2","4","11"], "game": "Dungeons & Dragons 5e", "created_at": "2023-03-15T18:00:00.000000", "is_deleted": false },
         "18": { "gamemaster_id": "9", "number_of_players": 4, "player_ids": ["3","8","9","12"], "game": "Call of Cthulhu", "created_at": "2023-10-29T20:30:00.000000", "is_deleted": false },
         "19": { "gamemaster_id": "10", "number_of_players": 4, "player_ids": ["1","5","6","11"], "game": "Dragonbane", "created_at": "2023-06-11T19:00:00.000000", "is_deleted": false },
-        "20": { "gamemaster_id": "10", "number_of_players": 3, "player_ids": ["2","7","10"], "game": "Tormenta 20", "created_at": "2024-01-20T20:00:00.000000", "is_deleted": false },
+        "20": { "gamemaster_id": "10", "number_of_players": 3, "player_ids": ["2","7","11"], "game": "Tormenta 20", "created_at": "2024-01-20T20:00:00.000000", "is_deleted": false },
         "21": { "gamemaster_id": "11", "number_of_players": 4, "player_ids": ["3","4","8","12"], "game": "Dungeons & Dragons 5e", "created_at": "2024-04-07T18:30:00.000000", "is_deleted": true },
         "22": { "gamemaster_id": "11", "number_of_players": 4, "player_ids": ["1","5","9","11"], "game": "Dragonbane", "created_at": "2024-11-15T19:00:00.000000", "is_deleted": false },
         "23": { "gamemaster_id": "12", "number_of_players": 3, "player_ids": ["2","6","10"], "game": "Call of Cthulhu", "created_at": "2025-03-22T20:00:00.000000", "is_deleted": false },
