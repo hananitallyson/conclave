@@ -335,15 +335,14 @@ if __name__ == "__main__":
 
                 party_id = inputs.id("SELECT THE PARTY ID: ")
 
-                created_at = database.data["parties"][party_id]["created_at"]
-
                 if party_id in database.data["parties"] and database.data["parties"][party_id]["is_deleted"] == False:
                     print(f"\nYOU CHOOSE PARTY {party_id}")
 
                     yes = input("CONTINUE? (Y/N): ").upper()
 
                     if (yes == "Y") or (yes == ""):
-                        gamemaster_id = inputs.id("NEW GAMEMASTER ID: ")
+                        created_at = database.data["parties"][party_id]["created_at"]
+                        gamemaster_id = inputs.id("\nNEW GAMEMASTER ID: ")
 
                         if gamemaster_id not in database.data["gamemasters"]:
                             print("\nGamemaster not found!")
