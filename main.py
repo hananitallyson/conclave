@@ -156,6 +156,7 @@ if __name__ == "__main__":
                     "email": email,
                     "years_experience": years_experience,
                     "created_at": created_at,
+                    "is_deleted": False
                 }
 
                 database.save()
@@ -242,7 +243,7 @@ if __name__ == "__main__":
                     yes = input("CONTINUE? (Y/N): ").upper()
 
                     if (yes == "Y") or (yes == ""):
-                        del database.data["gamemasters"][gm_id]
+                        database.data["gamemasters"][gm_id]["is_deleted"] = True
 
                         database.save()
 
