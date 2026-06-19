@@ -173,7 +173,7 @@ if __name__ == "__main__":
 
                 gm_id = inputs.id("SEARCH BY GAMEMASTER ID: ")
 
-                if gm_id in database.data["gamemasters"]:
+                if gm_id in database.data["gamemasters"] and database.data["gamemasters"][gm_id]["is_deleted"] == False:
                     gm = database.data["gamemasters"][gm_id]
 
                     helpers.clear()
@@ -198,7 +198,7 @@ if __name__ == "__main__":
 
                 gm_id = inputs.id("SELECT THE GAMEMASTER ID: ")
 
-                if gm_id in database.data["gamemasters"]:
+                if gm_id in database.data["gamemasters"] and database.data["gamemasters"][gm_id]["is_deleted"] == False:
                     print(f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}")
 
                     yes = input("CONTINUE? (Y/N): ").upper()
@@ -237,7 +237,7 @@ if __name__ == "__main__":
 
                 gm_id = inputs.id("SELECT THE GAMEMASTER ID: ")
 
-                if gm_id in database.data["gamemasters"]:
+                if gm_id in database.data["gamemasters"] and database.data["gamemasters"][gm_id]["is_deleted"] == False:
                     print(f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}")
 
                     yes = input("CONTINUE? (Y/N): ").upper()
