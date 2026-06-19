@@ -162,6 +162,7 @@ def log_menu():
     print("(2) LIST GAMEMASTERS")
     print("(3) LIST PARTIES BY GAME")
     print("(4) LIST BY CREATION DATE")
+    print("(5) LIST PLAYERS BY GAMEMASTER")
     print("(0) EXIT")
 
     option = input("\n *  Choose your option: ")
@@ -177,7 +178,9 @@ def log_menu():
             option = 3
         case "4":
             option = 4
+        case "5":
+            option = 5
         case _:
-            option = 2
+            option = 1
 
     return option

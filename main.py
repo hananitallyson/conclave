@@ -504,5 +504,36 @@ if __name__ == "__main__":
 
                 interfaces.wait()
 
+            elif menu_option == 5:
+                helpers.clear()
+
+                print("---------- CONCLAVE PLAYERS BY GAMEMASTER ----------\n")
+
+                gm_id = inputs.id("ENTER GAMEMASTER ID: ")
+
+                if gm_id not in database.data["gamemasters"]:
+                    print("\nGamemaster not found!")
+                else:
+                    gm = database.data["gamemasters"][gm_id]
+
+                    print(f"\nGamemaster: {gm['name']}\n")
+                    print(f"{'PLAYER':<20} {'PARTY ID':<10}")
+                    print("=" * 35)
+
+                    found = False
+                    for party_id, party in database.data["parties"].items():
+                        if party["gamemaster_id"] == gm_id:
+                            found = True
+                            for pid in party["player_ids"]:
+                                name = database.data["players"][pid]["name"]
+                                print(f"{name:<20} {party_id:<10}")
+
+                    if not found:
+                        print("No parties found for this gamemaster.")
+
+                    print("=" * 35)
+
+                interfaces.wait()
+
         elif option == 0:
             interfaces.exit()
