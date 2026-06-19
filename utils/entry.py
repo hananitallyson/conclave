@@ -1,9 +1,9 @@
-from . import validation
+from . import validate
 
 def name(msg):
     name = input(msg)
 
-    while not validation.name(name):
+    while not validate.name(name):
         print("Invalid name.\nTry again!\n")
         name = input(msg)
 
@@ -13,7 +13,7 @@ def name(msg):
 def email(msg):
     email = input(msg)
 
-    while not validation.email(email):
+    while not validate.email(email):
         print("Invalid email.\nTry again!\n")
         email = input(msg)
 
@@ -23,7 +23,7 @@ def email(msg):
 def discord(msg):
     username = input(msg)
 
-    while not validation.username(username):
+    while not validate.username(username):
         print("Invalid discord username.\nTry again!\n")
         username = input(msg)
 
@@ -33,7 +33,7 @@ def discord(msg):
 def years_experience(msg):
     years = input(msg)
 
-    while not validation.years_experience(years):
+    while not validate.years_experience(years):
           print("Invalid number of years.\nTry again!\n")
           years = input(msg)
 
@@ -42,7 +42,7 @@ def years_experience(msg):
 def id(msg):
     id = input(msg)
 
-    while not validation.id(id):
+    while not validate.id(id):
         print("Invalid id.\nTry again!\n")
         id = input(msg)
 
@@ -51,7 +51,7 @@ def id(msg):
 def game(msg):
     game = input(msg)
 
-    while not validation.game(game):
+    while not validate.game(game):
         print("Invalid gamerule name.\nTry again!\n")
         game = input(msg)
 
@@ -61,7 +61,7 @@ def game(msg):
 def players(msg):
     players = input(msg)
 
-    while not validation.players([int(id) for id in players]):
+    while not validate.players([int(id) for id in players]):
         print("Invalid players id.\nTry again!\n")
         players = input(msg)
 
@@ -72,7 +72,7 @@ def players(msg):
 def date(msg):
     date = input(msg)
 
-    while not validation.date(date):
+    while not validate.date(date):
         print("Invalid date time.\nTry again!\n")
         date = input(msg)
 
