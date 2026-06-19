@@ -75,7 +75,7 @@ def player_menu():
     print("(2) FIND PLAYER")
     print("(3) UPDATE PLAYER")
     print("(4) DELETE PLAYER")
-    print("(0) EXIT")
+    print("(0) BACK TO MENU")
 
     option = input("\n *  Choose your option: ")
 
@@ -104,7 +104,7 @@ def gm_menu():
     print("(2) FIND GAMEMASTER")
     print("(3) UPDATE GAMEMASTER")
     print("(4) DELETE GAMEMASTER")
-    print("(0) EXIT")
+    print("(0) BACK TO MENU")
 
     option = input("\n *  Choose your option: ")
 
@@ -133,7 +133,7 @@ def party_menu():
     print("(2) FIND PARTY")
     print("(3) UPDATE PARTY")
     print("(4) DELETE PARTY")
-    print("(0) EXIT")
+    print("(0) BACK TO MENU")
 
     option = input("\n *  Choose your option: ")
 
@@ -163,7 +163,7 @@ def log_menu():
     print("(3) LIST PARTIES BY GAME")
     print("(4) LIST BY CREATION DATE")
     print("(5) LIST PLAYERS BY GAMEMASTER")
-    print("(0) EXIT")
+    print("(0) BACK TO MENU")
 
     option = input("\n *  Choose your option: ")
 
