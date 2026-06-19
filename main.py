@@ -36,6 +36,7 @@ if __name__ == "__main__":
                     "email": email,
                     "discord": discord,
                     "created_at": created_at,
+                    "is_deleted": False,
                 }
 
                 database.save()
@@ -118,7 +119,7 @@ if __name__ == "__main__":
                     yes = input("CONTINUE? (Y/N): ").upper()
 
                     if (yes == "Y") or (yes == ""):
-                        del database.data["players"][player_id]
+                        database.data["players"][player_id]["is_deleted"] = True
 
                         database.save()
 
