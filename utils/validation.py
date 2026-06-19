@@ -84,7 +84,7 @@ def game(game):
 
 
 # Date YYYY-MM-DD
-def validate_date(date):
+def date(date):
     is_valid = False
     date = date.strip()
 
