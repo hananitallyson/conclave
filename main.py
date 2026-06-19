@@ -559,12 +559,19 @@ if __name__ == "__main__":
                         print("=" * 35)
 
                         found = False
+                        player_parties = {}
                         for party_id, party in database.data["parties"].items():
                             if party["gamemaster_id"] == gm_id:
                                 found = True
                                 for player_id in party["player_ids"]:
-                                    name = database.data["players"][player_id]["name"]
-                                    print(f"{name:<20} {party_id:<10}")
+                                    if player_id not in player_parties:
+                                        player_parties[player_id] = []
+                                    player_parties[player_id].append(party_id)
+
+                        for player_id, party_ids in player_parties.items():
+                            name = database.data["players"][player_id]["name"]
+                            parties_str = ", ".join(party_ids)
+                            print(f"{name:<20} {parties_str}")
 
                         if not found:
                             print("No parties found for this gamemaster.")
