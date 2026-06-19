@@ -516,7 +516,7 @@ if __name__ == "__main__":
 
                     print("---------- CONCLAVE PLAYERS & GAMEMASTERS BY DATE ----------\n")
                     date_filter = datetime.fromisoformat(
-                        input("CREATED FROM (YYYY-MM-DD): ")
+                        inputs.date("CREATED FROM (YYYY-MM-DD): ")
                     )
 
                     print(f"\n{'ID':<8} {'TYPE':<12} {'NAME':<20} {'CREATED AT':<20}")

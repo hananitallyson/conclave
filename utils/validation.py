@@ -81,3 +81,22 @@ def game(game):
         is_valid = True
 
     return is_valid
+
+
+# Date YYYY-MM-DD
+def validate_date(date):
+    is_valid = False
+    date = date.strip()
+
+    if len(date) == 10 and date[4] == '-' and date[7] == '-':
+        year  = date[0:4]
+        month = date[5:7]
+        day   = date[8:10]
+
+        if year.isdigit() and month.isdigit() and day.isdigit():
+            year, month, day = int(year), int(month), int(day)
+
+            if 1 <= month <= 12 and 1 <= day <= 31:
+                is_valid = True
+
+    return is_valid

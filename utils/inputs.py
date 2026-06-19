@@ -63,3 +63,12 @@ def players(msg):
         print("Invalid players id.\nTry again!\n")
 
     return players
+
+
+def date(msg):
+    date = input(msg)
+
+    while not validation.date():
+        print("Invalid date time.\nTry again!\n")
+
+    return date
