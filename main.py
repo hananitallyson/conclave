@@ -476,14 +476,14 @@ if __name__ == "__main__":
 
                 print("---------- CONCLAVE PLAYERS & GAMEMASTERS BY DATE ----------\n")
                 date_filter = datetime.fromisoformat(
-                    input("CREATED AFTER (YYYY-MM-DD): ")
+                    input("CREATED FROM (YYYY-MM-DD): ")
                 )
 
                 print(f"\n{'ID':<8} {'TYPE':<12} {'NAME':<20} {'CREATED AT':<20}")
                 print("=" * 65)
 
                 for player_id, player in database.data["players"].items():
-                    if datetime.fromisoformat(player["created_at"]) > date_filter:
+                    if datetime.fromisoformat(player["created_at"]) >= date_filter:
                         print(
                             f"{player_id:<8} "
                             f"{'Player':<12} "
@@ -492,7 +492,7 @@ if __name__ == "__main__":
                         )
                 print("-" * 65)
                 for gm_id, gm in database.data["gamemasters"].items():
-                    if datetime.fromisoformat(gm["created_at"]) > date_filter:
+                    if datetime.fromisoformat(gm["created_at"]) >= date_filter:
                         print(
                             f"{gm_id:<8} "
                             f"{'Gamemaster':<12} "
