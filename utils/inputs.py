@@ -68,7 +68,7 @@ def players(msg):
 def date(msg):
     date = input(msg)
 
-    while not validation.date():
+    while not validation.date(date):
         print("Invalid date time.\nTry again!\n")
 
     return date
