@@ -330,15 +330,23 @@ if __name__ == "__main__":
                         print("---------- FIND PARTY ----------")
 
                         print(f"ID: {party_id}")
-                        print(
-                            f"GAMEMASTER: {database.data['gamemasters'][party['gamemaster_id']]['name']}"
-                        )
+                        if database.data['gamemasters'][party['gamemaster_id']]['is_deleted'] == False:
+                            print(
+                                f"GAMEMASTER: {database.data['gamemasters'][party['gamemaster_id']]['name']}"
+                            )
+                        else:
+                            print(
+                                f"GAMEMASTER: {database.data['gamemasters'][party['gamemaster_id']]['name']} <deleted>"
+                            )
                         print(f"GAME: {party['game']}")
                         print(f"NUMBER OF PLAYERS: {party['number_of_players']}")
                         print("PLAYERS:")
                         for player_id in party["player_ids"]:
                             player = database.data["players"][player_id]
-                            print(f"- {player['name']} ({player['discord']})")
+                            if player["is_deleted"] == False:
+                                print(f"- {player['name']} ({player['discord']})")
+                            else:
+                                print(f"- {player['name']} ({player['discord']}) <deleted>")
 
                     else:
                         print("\nParty not found!")
@@ -376,9 +384,9 @@ if __name__ == "__main__":
                             game = inputs.game("NEW GAMERULES: ")
 
                             database.data["parties"][party_id] = {
-                                "gamemaster": gamemaster_id,
+                                "gamemaster_id": gamemaster_id,
                                 "number_of_players": len(players),
-                                "players": players,
+                                "player_ids": players,
                                 "game": game,
                                 "created_at": created_at,
                                 "is_deleted": False,
