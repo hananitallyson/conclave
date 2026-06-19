@@ -78,7 +78,7 @@ if __name__ == "__main__":
 
                 player_id = inputs.id("SELECT THE PLAYER ID: ")
 
-                if player_id in database.data["players"]:
+                if player_id in database.data["players"] and database.data["players"][player_id]["is_deleted"] == False:
                     print(f"\nYOU CHOOSE {database.data['players'][player_id]['name']}")
 
                     yes = input("CONTINUE? (Y/N): ").upper()
@@ -113,7 +113,7 @@ if __name__ == "__main__":
 
                 player_id = inputs.id("SELECT THE PLAYER ID: ")
 
-                if player_id in database.data["players"]:
+                if player_id in database.data["players"] and database.data["players"][player_id]["is_deleted"] == False:
                     print(f"\nYOU CHOOSE {database.data['players'][player_id]['name']}")
 
                     yes = input("CONTINUE? (Y/N): ").upper()
