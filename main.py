@@ -304,7 +304,7 @@ if __name__ == "__main__":
 
                 party_id = inputs.id("SEARCH BY PARTY ID: ")
 
-                if party_id in database.data["parties"]:
+                if party_id in database.data["parties"] and database.data["parties"][party_id]["is_deleted"] == False:
                     party = database.data["parties"][party_id]
 
                     helpers.clear()
@@ -337,7 +337,7 @@ if __name__ == "__main__":
 
                 created_at = database.data["parties"][party_id]["created_at"]
 
-                if party_id in database.data["parties"]:
+                if party_id in database.data["parties"] and database.data["parties"][party_id]["is_deleted"] == False:
                     print(f"\nYOU CHOOSE PARTY {party_id}")
 
                     yes = input("CONTINUE? (Y/N): ").upper()
@@ -381,7 +381,7 @@ if __name__ == "__main__":
 
                 party_id = inputs.id("SELECT THE PARTY ID: ")
 
-                if party_id in database.data["parties"]:
+                if party_id in database.data["parties"] and database.data["parties"][party_id]["is_deleted"] == False:
                     print(f"\nYOU CHOOSE PARTY {party_id}")
 
                     yes = input("CONTINUE? (Y/N): ").upper()
