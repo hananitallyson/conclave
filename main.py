@@ -524,8 +524,8 @@ if __name__ == "__main__":
                     for party_id, party in database.data["parties"].items():
                         if party["gamemaster_id"] == gm_id:
                             found = True
-                            for pid in party["player_ids"]:
-                                name = database.data["players"][pid]["name"]
+                            for player_id in party["player_ids"]:
+                                name = database.data["players"][player_id]["name"]
                                 print(f"{name:<20} {party_id:<10}")
 
                     if not found:
