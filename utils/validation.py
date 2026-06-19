@@ -89,12 +89,14 @@ def date(date):
     date = date.strip()
 
     if len(date) == 10 and date[4] == '-' and date[7] == '-':
-        year  = date[0:4]
+        year = date[0:4]
         month = date[5:7]
-        day   = date[8:10]
+        day = date[8:10]
 
         if year.isdigit() and month.isdigit() and day.isdigit():
-            year, month, day = int(year), int(month), int(day)
+            year = int(year)
+            month = int(month)
+            day = int(day)
 
             if 1 <= month <= 12 and 1 <= day <= 31:
                 is_valid = True
