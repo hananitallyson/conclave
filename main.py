@@ -434,7 +434,8 @@ if __name__ == "__main__":
                     print("=" * 85)
 
                     for player_id, player in database.data["players"].items():
-                        print(
+                        if player["is_deleted"] == False:
+                            print(
                             f"{player_id:<8} "
                             f"{player['name']:<20} "
                             f"{player['email']:<30} "
@@ -455,13 +456,14 @@ if __name__ == "__main__":
                     print("=" * 85)
 
                     for gamemaster_id, gamemaster in database.data["gamemasters"].items():
-                        experience = f"{gamemaster['years_experience']} yrs"
-                        print(
-                            f"{gamemaster_id:<8} "
-                            f"{gamemaster['name']:<20} "
-                            f"{gamemaster['email']:<30} "
-                            f"{experience:<20}"
-                        )
+                        if gamemaster["is_deleted"] == False:
+                            experience = f"{gamemaster['years_experience']} yrs"
+                            print(
+                                f"{gamemaster_id:<8} "
+                                f"{gamemaster['name']:<20} "
+                                f"{gamemaster['email']:<30} "
+                                f"{experience:<20}"
+                            )
 
                     print("=" * 85)
 
@@ -480,7 +482,7 @@ if __name__ == "__main__":
                         print("=" * 85)
 
                         for party_id, party in database.data["parties"].items():
-                            if game_chosen == party['game']:
+                            if game_chosen == party["game"] and party["is_deleted"] == False:
                               players = ", ".join(
                                   database.data["players"][player_id]["name"]
                                   for player_id in party["player_ids"]
@@ -514,21 +516,25 @@ if __name__ == "__main__":
 
                     for player_id, player in database.data["players"].items():
                         if datetime.fromisoformat(player["created_at"]) >= date_filter:
-                            print(
-                                f"{player_id:<8} "
-                                f"{'Player':<12} "
-                                f"{player['name']:<20} "
-                                f"{player['created_at'][:19]:<20}"
-                            )
+                            if player["is_deleted"] == False:
+                                print(
+                                    f"{player_id:<8} "
+                                    f"{'Player':<12} "
+                                    f"{player['name']:<20} "
+                                    f"{player['created_at'][:19]:<20}"
+                                )
+
                     print("-" * 65)
-                    for gm_id, gm in database.data["gamemasters"].items():
-                        if datetime.fromisoformat(gm["created_at"]) >= date_filter:
-                            print(
-                                f"{gm_id:<8} "
-                                f"{'Gamemaster':<12} "
-                                f"{gm['name']:<20} "
-                                f"{gm['created_at'][:19]:<20}"
-                            )
+
+                    for gm_id, gamemaster in database.data["gamemasters"].items():
+                        if datetime.fromisoformat(gamemaster["created_at"]) >= date_filter:
+                            if gamemaster["is_deleted"] == False:
+                                print(
+                                    f"{gm_id:<8} "
+                                    f"{'Gamemaster':<12} "
+                                    f"{gamemaster['name']:<20} "
+                                    f"{gamemaster['created_at'][:19]:<20}"
+                                )
 
                     print("=" * 65)
 
