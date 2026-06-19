@@ -361,6 +361,7 @@ if __name__ == "__main__":
                             "players": players,
                             "game": game,
                             "created_at": created_at,
+                            "is_deleted": False,
                         }
 
                         database.save()
