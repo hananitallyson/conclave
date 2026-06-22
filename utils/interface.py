@@ -31,7 +31,7 @@ def exit():
 def todo():
     helper.clear()
 
-    print("---------- TODO ----------")
+    header("TODO")
     print("This module has not been implemented yet.")
     print("TODO: Feature under development.")
 
@@ -41,7 +41,7 @@ def todo():
 def main_menu():
     helper.clear()
 
-    print("---------- CONCLAVE MENU ----------")
+    header("CONCLAVE MENU")
     print("(1) PLAYERS")
     print("(2) GAMEMASTERS")
     print("(3) PARTIES")
@@ -70,7 +70,7 @@ def main_menu():
 def player_menu():
     helper.clear()
 
-    print("---------- PLAYERS ----------")
+    header("PLAYERS")
     print("(1) NEW PLAYER")
     print("(2) FIND PLAYER")
     print("(3) UPDATE PLAYER")
@@ -99,7 +99,7 @@ def player_menu():
 def gm_menu():
     helper.clear()
 
-    print("---------- GAMEMASTERS ----------")
+    header("GAMEMASTERS")
     print("(1) NEW GAMEMASTER")
     print("(2) FIND GAMEMASTER")
     print("(3) UPDATE GAMEMASTER")
@@ -128,7 +128,7 @@ def gm_menu():
 def party_menu():
     helper.clear()
 
-    print("---------- PARTIES ----------")
+    header("PARTIES")
     print("(1) NEW PARTY")
     print("(2) FIND PARTY")
     print("(3) UPDATE PARTY")
@@ -157,7 +157,7 @@ def party_menu():
 def log_menu():
     helper.clear()
 
-    print("---------- CONCLAVE LOGS ----------")
+    header("CONCLAVE LOGS")
     print("(1) LIST PLAYERS")
     print("(2) LIST GAMEMASTERS")
     print("(3) LIST PARTIES BY GAME")
