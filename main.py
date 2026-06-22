@@ -1,7 +1,7 @@
 import utils.database as database
 import utils.entry as entry
+import utils.helper as helper
 import utils.interface as interface
-from datetime import datetime
 
 if __name__ == "__main__":
     option = ""
@@ -26,7 +26,7 @@ if __name__ == "__main__":
                     name = entry.name("NAME: ")
                     email = entry.email("EMAIL: ")
                     discord = entry.discord("DISCORD (e.g. @username): ")
-                    created_at = datetime.now().isoformat()
+                    created_at = helper.timestamp()
 
                     database.data["players"][player_id] = {
                         "name": name,
@@ -142,7 +142,7 @@ if __name__ == "__main__":
                     years_experience = entry.years_experience(
                         "YEARS OF EXPERIENCE (e.g. 2): "
                     )
-                    created_at = datetime.now().isoformat()
+                    created_at = helper.timestamp()
 
                     database.data["gamemasters"][gm_id] = {
                         "name": name,
@@ -268,7 +268,7 @@ if __name__ == "__main__":
 
                         game = input("GAMERULES: ")
 
-                        created_at = datetime.now().isoformat()
+                        created_at = helper.timestamp()
 
                         database.data["parties"][party_id] = {
                             "gamemaster_id": gamemaster_id,
@@ -472,7 +472,7 @@ if __name__ == "__main__":
 
                 elif menu_option == 4:
                     interface.header("CONCLAVE PLAYERS & GAMEMASTERS BY DATE")
-                    date_filter = datetime.fromisoformat(
+                    date_filter = helper.fromiso(
                         entry.date("CREATED FROM (YYYY-MM-DD): ")
                     )
 
@@ -480,25 +480,25 @@ if __name__ == "__main__":
                     print("=" * 65)
 
                     for player_id, player in database.data["players"].items():
-                        if datetime.fromisoformat(player["created_at"]) >= date_filter:
+                        if helper.fromiso(player["created_at"]) >= date_filter:
                             if player["is_deleted"] == False:
                                 print(
                                     f"{player_id:<8} "
                                     f"{'Player':<12} "
                                     f"{player['name']:<20} "
-                                    f"{player['created_at'][:19]:<20}"
+                                    f"{helper.timestring(player['created_at'])[:19]:<20}"
                                 )
 
                     print("-" * 65)
 
                     for gm_id, gamemaster in database.data["gamemasters"].items():
-                        if datetime.fromisoformat(gamemaster["created_at"]) >= date_filter:
+                        if helper.fromiso(gamemaster["created_at"]) >= date_filter:
                             if gamemaster["is_deleted"] == False:
                                 print(
                                     f"{gm_id:<8} "
                                     f"{'Gamemaster':<12} "
                                     f"{gamemaster['name']:<20} "
-                                    f"{gamemaster['created_at'][:19]:<20}"
+                                    f"{helper.timestring(gamemaster['created_at'])[:19]:<20}"
                                 )
 
                     print("=" * 65)
