@@ -18,9 +18,7 @@ if __name__ == "__main__":
             while menu_option != 0:
                 # CREATE PLAYER
                 if menu_option == 1:
-                    helper.clear()
-
-                    print("---------- CREATE PLAYER ----------")
+                    interface.header("CREATE PLAYER")
 
                     player_id = str(len(database.data["players"]) + 1)
 
@@ -49,18 +47,14 @@ if __name__ == "__main__":
 
                 # FIND PLAYER
                 elif menu_option == 2:
-                    helper.clear()
-
-                    print("---------- FIND PLAYER ----------")
+                    interface.header("FIND PLAYER")
 
                     player_id = entry.id("SEARCH BY PLAYER ID: ")
 
                     if player_id in database.data["players"] and database.data["players"][player_id]["is_deleted"] == False:
                         player = database.data["players"][player_id]
 
-                        helper.clear()
-
-                        print("---------- FIND PLAYER ----------")
+                        interface.header("FIND PLAYER")
 
                         print(f"ID: {player_id}")
                         print(f"NAME: {player['name']}")
@@ -76,9 +70,7 @@ if __name__ == "__main__":
 
                 # UPDATE PLAYER
                 elif menu_option == 3:
-                    helper.clear()
-
-                    print("---------- UPDATE PLAYER ----------")
+                    interface.header("UPDATE PLAYER")
 
                     player_id = entry.id("SELECT THE PLAYER ID: ")
 
@@ -88,9 +80,7 @@ if __name__ == "__main__":
                         yes = input("CONTINUE? (Y/N): ").upper()
 
                         if (yes == "Y") or (yes == ""):
-                            helper.clear()
-
-                            print("---------- UPDATE PLAYER ----------")
+                            interface.header("UPDATE PLAYER")
 
                             name = entry.name("NAME: ")
                             email = entry.email("EMAIL: ")
@@ -113,9 +103,7 @@ if __name__ == "__main__":
 
                 # DELETE PLAYER
                 elif menu_option == 4:
-                    helper.clear()
-
-                    print("---------- DELETE PLAYER ----------")
+                    interface.header("DELETE PLAYER")
 
                     player_id = entry.id("SELECT THE PLAYER ID: ")
 
@@ -144,9 +132,7 @@ if __name__ == "__main__":
             while menu_option != 0:
                 # CREATE GAMEMASTER
                 if menu_option == 1:
-                    helper.clear()
-
-                    print("---------- CREATE GAMEMASTER ----------")
+                    interface.header("CREATE GAMEMASTER")
 
                     gm_id = str(len(database.data["gamemasters"]) + 1)
 
@@ -177,18 +163,14 @@ if __name__ == "__main__":
 
                 # FIND GAMEMASTER
                 elif menu_option == 2:
-                    helper.clear()
-
-                    print("---------- FIND GAMEMASTER ----------")
+                    interface.header("FIND GAMEMASTER")
 
                     gm_id = entry.id("SEARCH BY GAMEMASTER ID: ")
 
                     if gm_id in database.data["gamemasters"] and database.data["gamemasters"][gm_id]["is_deleted"] == False:
                         gm = database.data["gamemasters"][gm_id]
 
-                        helper.clear()
-
-                        print("---------- FIND GAMEMASTER ----------")
+                        interface.header("FIND GAMEMASTER")
 
                         print(f"ID: {gm_id}")
                         print(f"NAME: {gm['name']}")
@@ -204,9 +186,7 @@ if __name__ == "__main__":
 
                 # UPDATE GAMEMASTER
                 elif menu_option == 3:
-                    helper.clear()
-
-                    print("---------- UPDATE GAMEMASTER ----------")
+                    interface.header("UPDATE GAMEMASTER")
 
                     gm_id = entry.id("SELECT THE GAMEMASTER ID: ")
 
@@ -216,9 +196,7 @@ if __name__ == "__main__":
                         yes = input("CONTINUE? (Y/N): ").upper()
 
                         if (yes == "Y") or (yes == ""):
-                            helper.clear()
-
-                            print("---------- UPDATE GAMEMASTER ----------")
+                            interface.header("UPDATE GAMEMASTER")
 
                             name = entry.name("NAME: ")
                             email = entry.email("EMAIL: ")
@@ -245,9 +223,7 @@ if __name__ == "__main__":
 
                 # DELETE GAMEMASTER
                 elif menu_option == 4:
-                    helper.clear()
-
-                    print("---------- DELETE GAMEMASTER ----------")
+                    interface.header("DELETE GAMEMASTER")
 
                     gm_id = entry.id("SELECT THE GAMEMASTER ID: ")
 
@@ -276,9 +252,7 @@ if __name__ == "__main__":
             while menu_option != 0:
                 # CREATE PARTY
                 if menu_option == 1:
-                    helper.clear()
-
-                    print("---------- CREATE PARTY ----------")
+                    interface.header("CREATE PARTY")
 
                     party_id = str(len(database.data["parties"]) + 1)
 
@@ -316,18 +290,14 @@ if __name__ == "__main__":
 
                 # FIND PARTY
                 elif menu_option == 2:
-                    helper.clear()
-
-                    print("---------- FIND PARTY ----------")
+                    interface.header("FIND PARTY")
 
                     party_id = entry.id("SEARCH BY PARTY ID: ")
 
                     if party_id in database.data["parties"] and database.data["parties"][party_id]["is_deleted"] == False:
                         party = database.data["parties"][party_id]
 
-                        helper.clear()
-
-                        print("---------- FIND PARTY ----------")
+                        interface.header("FIND PARTY")
 
                         print(f"ID: {party_id}")
                         if database.data['gamemasters'][party['gamemaster_id']]['is_deleted'] == False:
@@ -357,9 +327,7 @@ if __name__ == "__main__":
 
                 # UPDATE PARTY
                 elif menu_option == 3:
-                    helper.clear()
-
-                    print("---------- UPDATE PARTY ----------")
+                    interface.header("UPDATE PARTY")
 
                     party_id = entry.id("SELECT THE PARTY ID: ")
 
@@ -405,9 +373,7 @@ if __name__ == "__main__":
 
                 # DELETE PARTY
                 elif menu_option == 4:
-                    helper.clear()
-
-                    print("---------- DELETE PARTY ----------")
+                    interface.header("DELETE PARTY")
 
                     party_id = entry.id("SELECT THE PARTY ID: ")
 
@@ -435,9 +401,7 @@ if __name__ == "__main__":
             menu_option = interface.log_menu()
             while menu_option != 0:
                 if menu_option == 1:
-                    helper.clear()
-
-                    print("---------- CONCLAVE PLAYERS ----------\n")
+                    interface.header("CONCLAVE PLAYERS")
                     print(f"{'ID':<8} {'PLAYER':<20} {'EMAIL':<30} {'DISCORD':<20}")
                     print("=" * 85)
 
@@ -457,9 +421,7 @@ if __name__ == "__main__":
                     menu_option = interface.log_menu()
 
                 elif menu_option == 2:
-                    helper.clear()
-
-                    print("---------- CONCLAVE GAMEMASTERS ----------\n")
+                    interface.header("CONCLAVE GAMEMASTERS")
                     print(f"{'ID':<8} {'GAMEMASTER':<20} {'EMAIL':<30} {'EXPERIENCE':<20}")
                     print("=" * 85)
 
@@ -480,9 +442,7 @@ if __name__ == "__main__":
                     menu_option = interface.log_menu()
 
                 elif menu_option == 3:
-                    helper.clear()
-
-                    print("---------- CONCLAVE PARTIES ----------\n")
+                    interface.header("CONCLAVE PARTIES")
                     game_chosen = entry.game("ENTER A GAME: ")
 
                     if game_chosen in [party["game"] for party in database.data["parties"].values()]:
@@ -512,9 +472,7 @@ if __name__ == "__main__":
                     menu_option = interface.log_menu()
 
                 elif menu_option == 4:
-                    helper.clear()
-
-                    print("---------- CONCLAVE PLAYERS & GAMEMASTERS BY DATE ----------\n")
+                    interface.header("CONCLAVE PLAYERS & GAMEMASTERS BY DATE")
                     date_filter = datetime.fromisoformat(
                         entry.date("CREATED FROM (YYYY-MM-DD): ")
                     )
@@ -551,9 +509,7 @@ if __name__ == "__main__":
                     menu_option = interface.log_menu()
 
                 elif menu_option == 5:
-                    helper.clear()
-
-                    print("---------- CONCLAVE PLAYERS BY GAMEMASTER ----------\n")
+                    interface.header("CONCLAVE PLAYERS BY GAMEMASTER")
 
                     gm_id = entry.id("ENTER GAMEMASTER ID: ")
 

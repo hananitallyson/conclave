@@ -184,3 +184,9 @@ def log_menu():
             option = 1
 
     return option
+
+
+def header(title):
+    helper.clear()
+    
+    print(f"-------------- {title} --------------\n")
