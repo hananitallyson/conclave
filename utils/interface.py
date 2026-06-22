@@ -188,5 +188,16 @@ def log_menu():
 
 def header(title):
     helper.clear()
-    
+
     print(f"-------------- {title} --------------\n")
+
+
+def confirm():
+    i = input("CONTINUE? (Y/N): ").upper()
+
+    if i == "Y" or i == "":
+        choice = True
+    else:
+        choice = False
+
+    return choice

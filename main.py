@@ -1,5 +1,4 @@
 import utils.database as database
-import utils.helper as helper
 import utils.entry as entry
 import utils.interface as interface
 from datetime import datetime
@@ -77,9 +76,9 @@ if __name__ == "__main__":
                     if player_id in database.data["players"] and database.data["players"][player_id]["is_deleted"] == False:
                         print(f"\nYOU CHOOSE {database.data['players'][player_id]['name']}")
 
-                        yes = input("CONTINUE? (Y/N): ").upper()
+                        is_confirmed = interface.confirm()
 
-                        if (yes == "Y") or (yes == ""):
+                        if is_confirmed:
                             interface.header("UPDATE PLAYER")
 
                             name = entry.name("NAME: ")
@@ -110,9 +109,9 @@ if __name__ == "__main__":
                     if player_id in database.data["players"] and database.data["players"][player_id]["is_deleted"] == False:
                         print(f"\nYOU CHOOSE {database.data['players'][player_id]['name']}")
 
-                        yes = input("CONTINUE? (Y/N): ").upper()
+                        is_confirmed = interface.confirm()
 
-                        if (yes == "Y") or (yes == ""):
+                        if is_confirmed:
                             database.data["players"][player_id]["is_deleted"] = True
 
                             database.save()
@@ -193,9 +192,9 @@ if __name__ == "__main__":
                     if gm_id in database.data["gamemasters"] and database.data["gamemasters"][gm_id]["is_deleted"] == False:
                         print(f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}")
 
-                        yes = input("CONTINUE? (Y/N): ").upper()
+                        is_confirmed = interface.confirm()
 
-                        if (yes == "Y") or (yes == ""):
+                        if is_confirmed:
                             interface.header("UPDATE GAMEMASTER")
 
                             name = entry.name("NAME: ")
@@ -230,9 +229,9 @@ if __name__ == "__main__":
                     if gm_id in database.data["gamemasters"] and database.data["gamemasters"][gm_id]["is_deleted"] == False:
                         print(f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}")
 
-                        yes = input("CONTINUE? (Y/N): ").upper()
+                        is_confirmed = interface.confirm()
 
-                        if (yes == "Y") or (yes == ""):
+                        if is_confirmed:
                             database.data["gamemasters"][gm_id]["is_deleted"] = True
 
                             database.save()
@@ -334,9 +333,9 @@ if __name__ == "__main__":
                     if party_id in database.data["parties"] and database.data["parties"][party_id]["is_deleted"] == False:
                         print(f"\nYOU CHOOSE PARTY {party_id}")
 
-                        yes = input("CONTINUE? (Y/N): ").upper()
+                        is_confirmed = interface.confirm()
 
-                        if (yes == "Y") or (yes == ""):
+                        if is_confirmed:
                             created_at = database.data["parties"][party_id]["created_at"]
                             gamemaster_id = entry.id("\nNEW GAMEMASTER ID: ")
 
