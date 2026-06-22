@@ -517,7 +517,11 @@ if __name__ == "__main__":
                     else:
                         gm = database.data["gamemasters"][gm_id]
 
-                        print(f"\nGamemaster: {gm['name']}\n")
+                        if gm['is_deleted'] == False:
+                            print(f"\nGAMEMASTER: {gm['name']}\n")
+                        else:
+                            print(f"\nGAMEMASTER: {gm['name']} <deleted>\n")
+
                         print(f"{'PLAYER':<20} {'PARTY ID':<10}")
                         print("=" * 35)
 
