@@ -26,7 +26,7 @@ if __name__ == "__main__":
                     name = entry.name("NAME: ")
                     email = entry.email("EMAIL: ")
                     discord = entry.discord("DISCORD (e.g. @username): ")
-                    created_at = helper.timestamp()
+                    created_at = database.timestamp()
 
                     database.data["players"][player_id] = {
                         "name": name,
@@ -142,7 +142,7 @@ if __name__ == "__main__":
                     years_experience = entry.years_experience(
                         "YEARS OF EXPERIENCE (e.g. 2): "
                     )
-                    created_at = helper.timestamp()
+                    created_at = database.timestamp()
 
                     database.data["gamemasters"][gm_id] = {
                         "name": name,
@@ -268,7 +268,7 @@ if __name__ == "__main__":
 
                         game = input("GAMERULES: ")
 
-                        created_at = helper.timestamp()
+                        created_at = database.timestamp()
 
                         database.data["parties"][party_id] = {
                             "gamemaster_id": gamemaster_id,

@@ -5,10 +5,6 @@ def clear():
     subprocess.run("clear")
 
 
-def timestamp():
-    return datetime.now().isoformat()
-
-
 def fromiso(iso):
     return datetime.fromisoformat(iso)
 
