@@ -50,7 +50,10 @@ if __name__ == "__main__":
 
                     player_id = entry.id("SEARCH BY PLAYER ID: ")
 
-                    if player_id in database.data["players"] and database.data["players"][player_id]["is_deleted"] == False:
+                    if (
+                        player_id in database.data["players"]
+                        and database.data["players"][player_id]["is_deleted"] == False
+                    ):
                         player = database.data["players"][player_id]
 
                         interface.header("FIND PLAYER")
@@ -73,8 +76,13 @@ if __name__ == "__main__":
 
                     player_id = entry.id("SELECT THE PLAYER ID: ")
 
-                    if player_id in database.data["players"] and database.data["players"][player_id]["is_deleted"] == False:
-                        print(f"\nYOU CHOOSE {database.data['players'][player_id]['name']}")
+                    if (
+                        player_id in database.data["players"]
+                        and database.data["players"][player_id]["is_deleted"] == False
+                    ):
+                        print(
+                            f"\nYOU CHOOSE {database.data['players'][player_id]['name']}"
+                        )
 
                         is_confirmed = interface.confirm()
 
@@ -106,8 +114,13 @@ if __name__ == "__main__":
 
                     player_id = entry.id("SELECT THE PLAYER ID: ")
 
-                    if player_id in database.data["players"] and database.data["players"][player_id]["is_deleted"] == False:
-                        print(f"\nYOU CHOOSE {database.data['players'][player_id]['name']}")
+                    if (
+                        player_id in database.data["players"]
+                        and database.data["players"][player_id]["is_deleted"] == False
+                    ):
+                        print(
+                            f"\nYOU CHOOSE {database.data['players'][player_id]['name']}"
+                        )
 
                         is_confirmed = interface.confirm()
 
@@ -166,7 +179,10 @@ if __name__ == "__main__":
 
                     gm_id = entry.id("SEARCH BY GAMEMASTER ID: ")
 
-                    if gm_id in database.data["gamemasters"] and database.data["gamemasters"][gm_id]["is_deleted"] == False:
+                    if (
+                        gm_id in database.data["gamemasters"]
+                        and database.data["gamemasters"][gm_id]["is_deleted"] == False
+                    ):
                         gm = database.data["gamemasters"][gm_id]
 
                         interface.header("FIND GAMEMASTER")
@@ -189,8 +205,13 @@ if __name__ == "__main__":
 
                     gm_id = entry.id("SELECT THE GAMEMASTER ID: ")
 
-                    if gm_id in database.data["gamemasters"] and database.data["gamemasters"][gm_id]["is_deleted"] == False:
-                        print(f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}")
+                    if (
+                        gm_id in database.data["gamemasters"]
+                        and database.data["gamemasters"][gm_id]["is_deleted"] == False
+                    ):
+                        print(
+                            f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}"
+                        )
 
                         is_confirmed = interface.confirm()
 
@@ -226,8 +247,13 @@ if __name__ == "__main__":
 
                     gm_id = entry.id("SELECT THE GAMEMASTER ID: ")
 
-                    if gm_id in database.data["gamemasters"] and database.data["gamemasters"][gm_id]["is_deleted"] == False:
-                        print(f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}")
+                    if (
+                        gm_id in database.data["gamemasters"]
+                        and database.data["gamemasters"][gm_id]["is_deleted"] == False
+                    ):
+                        print(
+                            f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}"
+                        )
 
                         is_confirmed = interface.confirm()
 
@@ -293,13 +319,21 @@ if __name__ == "__main__":
 
                     party_id = entry.id("SEARCH BY PARTY ID: ")
 
-                    if party_id in database.data["parties"] and database.data["parties"][party_id]["is_deleted"] == False:
+                    if (
+                        party_id in database.data["parties"]
+                        and database.data["parties"][party_id]["is_deleted"] == False
+                    ):
                         party = database.data["parties"][party_id]
 
                         interface.header("FIND PARTY")
 
                         print(f"ID: {party_id}")
-                        if database.data['gamemasters'][party['gamemaster_id']]['is_deleted'] == False:
+                        if (
+                            database.data["gamemasters"][party["gamemaster_id"]][
+                                "is_deleted"
+                            ]
+                            == False
+                        ):
                             print(
                                 f"GAMEMASTER: {database.data['gamemasters'][party['gamemaster_id']]['name']}"
                             )
@@ -315,7 +349,9 @@ if __name__ == "__main__":
                             if player["is_deleted"] == False:
                                 print(f"- {player['name']} ({player['discord']})")
                             else:
-                                print(f"- {player['name']} ({player['discord']}) <deleted>")
+                                print(
+                                    f"- {player['name']} ({player['discord']}) <deleted>"
+                                )
 
                     else:
                         print("\nParty not found!")
@@ -330,13 +366,18 @@ if __name__ == "__main__":
 
                     party_id = entry.id("SELECT THE PARTY ID: ")
 
-                    if party_id in database.data["parties"] and database.data["parties"][party_id]["is_deleted"] == False:
+                    if (
+                        party_id in database.data["parties"]
+                        and database.data["parties"][party_id]["is_deleted"] == False
+                    ):
                         print(f"\nYOU CHOOSE PARTY {party_id}")
 
                         is_confirmed = interface.confirm()
 
                         if is_confirmed:
-                            created_at = database.data["parties"][party_id]["created_at"]
+                            created_at = database.data["parties"][party_id][
+                                "created_at"
+                            ]
                             gamemaster_id = entry.id("\nNEW GAMEMASTER ID: ")
 
                             if gamemaster_id not in database.data["gamemasters"]:
@@ -376,7 +417,10 @@ if __name__ == "__main__":
 
                     party_id = entry.id("SELECT THE PARTY ID: ")
 
-                    if party_id in database.data["parties"] and database.data["parties"][party_id]["is_deleted"] == False:
+                    if (
+                        party_id in database.data["parties"]
+                        and database.data["parties"][party_id]["is_deleted"] == False
+                    ):
                         print(f"\nYOU CHOOSE PARTY {party_id}")
 
                         yes = input("CONTINUE? (Y/N): ").upper()
@@ -399,6 +443,7 @@ if __name__ == "__main__":
         elif option == 4:
             menu_option = interface.log_menu()
             while menu_option != 0:
+                # LIST PLAYERS
                 if menu_option == 1:
                     interface.header("CONCLAVE PLAYERS")
                     print(f"{'ID':<8} {'PLAYER':<20} {'EMAIL':<30} {'DISCORD':<20}")
@@ -407,11 +452,11 @@ if __name__ == "__main__":
                     for player_id, player in database.data["players"].items():
                         if player["is_deleted"] == False:
                             print(
-                            f"{player_id:<8} "
-                            f"{player['name']:<20} "
-                            f"{player['email']:<30} "
-                            f"{player['discord']:<20}"
-                        )
+                                f"{player_id:<8} "
+                                f"{player['name']:<20} "
+                                f"{player['email']:<30} "
+                                f"{player['discord']:<20}"
+                            )
 
                     print("=" * 85)
 
@@ -419,12 +464,17 @@ if __name__ == "__main__":
 
                     menu_option = interface.log_menu()
 
+                # LIST GAMEMASTERS
                 elif menu_option == 2:
                     interface.header("CONCLAVE GAMEMASTERS")
-                    print(f"{'ID':<8} {'GAMEMASTER':<20} {'EMAIL':<30} {'EXPERIENCE':<20}")
+                    print(
+                        f"{'ID':<8} {'GAMEMASTER':<20} {'EMAIL':<30} {'EXPERIENCE':<20}"
+                    )
                     print("=" * 85)
 
-                    for gamemaster_id, gamemaster in database.data["gamemasters"].items():
+                    for gamemaster_id, gamemaster in database.data[
+                        "gamemasters"
+                    ].items():
                         if gamemaster["is_deleted"] == False:
                             experience = f"{gamemaster['years_experience']} yrs"
                             print(
@@ -440,27 +490,35 @@ if __name__ == "__main__":
 
                     menu_option = interface.log_menu()
 
+                # LIST PARTIES BY GAME
                 elif menu_option == 3:
-                    interface.header("CONCLAVE PARTIES")
+                    interface.header("CONCLAVE PARTIES BY GAME")
                     game_chosen = entry.game("ENTER A GAME: ")
 
-                    if game_chosen in [party["game"] for party in database.data["parties"].values()]:
-                        print(f"\n{'PARTY ID':<12} {'GAMEMASTER':<20} {'NUMBER OF PLAYERS':<30} {'PLAYERS':<20}")
+                    if game_chosen in [
+                        party["game"] for party in database.data["parties"].values()
+                    ]:
+                        print(
+                            f"\n{'PARTY ID':<12} {'GAMEMASTER':<20} {'NUMBER OF PLAYERS':<30} {'PLAYERS':<20}"
+                        )
                         print("=" * 98)
 
                         for party_id, party in database.data["parties"].items():
-                            if game_chosen == party["game"] and party["is_deleted"] == False:
-                              players = ", ".join(
-                                  database.data["players"][player_id]["name"]
-                                  for player_id in party["player_ids"]
-                              )
+                            if (
+                                game_chosen == party["game"]
+                                and party["is_deleted"] == False
+                            ):
+                                players = ", ".join(
+                                    database.data["players"][player_id]["name"]
+                                    for player_id in party["player_ids"]
+                                )
 
-                              print(
-                                  f"{party_id:<12} "
-                                  f"{database.data['gamemasters'][party['gamemaster_id']]['name']:<20} "
-                                  f"{party['number_of_players']:<30} "
-                                  f"{players:<20}"
-                              )
+                                print(
+                                    f"{party_id:<12} "
+                                    f"{database.data['gamemasters'][party['gamemaster_id']]['name']:<20} "
+                                    f"{party['number_of_players']:<30} "
+                                    f"{players:<20}"
+                                )
 
                         print("=" * 98)
                     else:
@@ -470,6 +528,7 @@ if __name__ == "__main__":
 
                     menu_option = interface.log_menu()
 
+                # LIST PLAYERS & GAMEMASTERS BY DATE
                 elif menu_option == 4:
                     interface.header("CONCLAVE PLAYERS & GAMEMASTERS BY DATE")
                     date_filter = helper.fromiso(
@@ -507,6 +566,7 @@ if __name__ == "__main__":
 
                     menu_option = interface.log_menu()
 
+                # LIST PLAYERS BY GAMEMASTERS
                 elif menu_option == 5:
                     interface.header("CONCLAVE PLAYERS BY GAMEMASTER")
 
@@ -517,7 +577,7 @@ if __name__ == "__main__":
                     else:
                         gm = database.data["gamemasters"][gm_id]
 
-                        if gm['is_deleted'] == False:
+                        if gm["is_deleted"] == False:
                             print(f"\nGAMEMASTER: {gm['name']}\n")
                         else:
                             print(f"\nGAMEMASTER: {gm['name']} <deleted>\n")
@@ -551,3 +611,4 @@ if __name__ == "__main__":
 
         elif option == 0:
             interface.exit()
+
