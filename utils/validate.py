@@ -1,10 +1,13 @@
+import datetime
+
+
 # Only letters and spaces,
 # and 2 to 100 characters.
 def name(name):
     is_valid = False
     name = name.strip()
 
-    if name and len(name) >= 2 and len(name) <= 100:
+    if name and (len(name) >= 2) and (len(name) <= 100):
         words = name.split()
         all_words_valid = True
 
@@ -31,7 +34,7 @@ def email(email):
             local = parts[0]
             domain = parts[1]
 
-            if local and "." in domain:
+            if local and ("." in domain):
                 is_valid = True
 
     return is_valid
@@ -45,7 +48,7 @@ def username(username):
     if username.startswith("@"):
         handle = username[1:]
 
-        if 2 <= len(handle) <= 32 and handle.replace("_", "").isalnum():
+        if (2 <= len(handle) <= 32) and (handle.replace("_", "").isalnum()):
             is_valid = True
 
     return is_valid
@@ -66,7 +69,7 @@ def years_experience(years):
 def id(id):
     is_valid = False
 
-    if id.isdigit() and int(id) > 0:
+    if id.isdigit() and (int(id) > 0):
         is_valid = True
 
     return is_valid
@@ -77,7 +80,7 @@ def game(game):
     is_valid = False
     game = game.strip()
 
-    if game and len(game) >= 2 and len(game) <= 100:
+    if game and (2 <= len(game) <= 100):
         is_valid = True
 
     return is_valid
@@ -88,7 +91,7 @@ def date(date):
     is_valid = False
     date = date.strip()
 
-    if len(date) == 10 and date[4] == '-' and date[7] == '-':
+    if (len(date) == 10) and (date[4] == "-") and (date[7] == "-"):
         year = date[0:4]
         month = date[5:7]
         day = date[8:10]
@@ -98,7 +101,8 @@ def date(date):
             month = int(month)
             day = int(day)
 
-            if 1 <= month <= 12 and 1 <= day <= 31:
+            if (1 <= month <= 12) and (1 <= day <= 31) and (year <= datetime.date.today().year):
                 is_valid = True
 
     return is_valid
+
