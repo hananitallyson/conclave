@@ -201,3 +201,18 @@ def confirm():
         choice = False
 
     return choice
+
+
+def show_player(player):
+    print(f"NAME: {player['name']}")
+    print(f"EMAIL: {player['email']}")
+    print(f"DISCORD: {player['discord']}")
+    print("")
+
+
+def show_gamemaster(gm):
+    print(f"NAME: {gm['name']}")
+    print(f"EMAIL: {gm['email']}")
+    print(f"YEARS OF EXPERIENCE: {gm['years_experience']}")
+    print("")
+

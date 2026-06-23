@@ -58,10 +58,7 @@ if __name__ == "__main__":
 
                         interface.header("FIND PLAYER")
 
-                        print(f"ID: {player_id}")
-                        print(f"NAME: {player['name']}")
-                        print(f"EMAIL: {player['email']}")
-                        print(f"DISCORD: {player['discord']}")
+                        interface.show_player(player)
 
                     else:
                         print("\nPlayer not found!")
@@ -75,23 +72,27 @@ if __name__ == "__main__":
                     interface.header("UPDATE PLAYER")
 
                     player_id = entry.id("SELECT THE PLAYER ID: ")
+                    print("")
 
                     if (
                         player_id in database.data["players"]
                         and database.data["players"][player_id]["is_deleted"] == False
                     ):
-                        print(
-                            f"\nYOU CHOOSE {database.data['players'][player_id]['name']}"
-                        )
+
+                        player = database.data["players"][player_id]
+
+                        interface.show_player(player)
 
                         is_confirmed = interface.confirm()
 
                         if is_confirmed:
                             interface.header("UPDATE PLAYER")
 
-                            name = entry.name("NAME: ")
-                            email = entry.email("EMAIL: ")
-                            discord = entry.discord("DISCORD: ")
+                            interface.show_player(player)
+
+                            name = entry.name("NEW NAME: ")
+                            email = entry.email("NEW EMAIL: ")
+                            discord = entry.discord("NEW DISCORD: ")
 
                             database.data["players"][player_id]["name"] = name
                             database.data["players"][player_id]["email"] = email
@@ -118,9 +119,10 @@ if __name__ == "__main__":
                         player_id in database.data["players"]
                         and database.data["players"][player_id]["is_deleted"] == False
                     ):
-                        print(
-                            f"\nYOU CHOOSE {database.data['players'][player_id]['name']}"
-                        )
+
+                        player = database.data["players"][player_id]
+
+                        interface.show_player(player)
 
                         is_confirmed = interface.confirm()
 
@@ -152,9 +154,7 @@ if __name__ == "__main__":
 
                     name = entry.name("NAME: ")
                     email = entry.email("EMAIL: ")
-                    years_experience = entry.years_experience(
-                        "YEARS OF EXPERIENCE (e.g. 2): "
-                    )
+                    years_experience = entry.years_experience("YEARS OF EXPERIENCE (e.g. 2): ")
                     created_at = database.timestamp()
 
                     database.data["gamemasters"][gm_id] = {
@@ -187,10 +187,7 @@ if __name__ == "__main__":
 
                         interface.header("FIND GAMEMASTER")
 
-                        print(f"ID: {gm_id}")
-                        print(f"NAME: {gm['name']}")
-                        print(f"EMAIL: {gm['email']}")
-                        print(f"YEARS OF EXPERIENCE: {gm['years_experience']}")
+                        interface.show_gamemaster(gm)
 
                     else:
                         print("\nGamemaster not found!")
@@ -209,26 +206,25 @@ if __name__ == "__main__":
                         gm_id in database.data["gamemasters"]
                         and database.data["gamemasters"][gm_id]["is_deleted"] == False
                     ):
-                        print(
-                            f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}"
-                        )
+
+                        gm = database.data["gamemasters"][gm_id]
+
+                        interface.show_gamemaster(gm)
 
                         is_confirmed = interface.confirm()
 
                         if is_confirmed:
                             interface.header("UPDATE GAMEMASTER")
 
+                            interface.show_gamemaster(gm)
+
                             name = entry.name("NAME: ")
                             email = entry.email("EMAIL: ")
-                            years_experience = entry.years_experience(
-                                "YEARS OF EXPERIENCE: "
-                            )
+                            years_experience = entry.years_experience("YEARS OF EXPERIENCE: ")
 
                             database.data["gamemasters"][gm_id]["name"] = name
                             database.data["gamemasters"][gm_id]["email"] = email
-                            database.data["gamemasters"][gm_id][
-                                "years_experience"
-                            ] = years_experience
+                            database.data["gamemasters"][gm_id]["years_experience"] = years_experience
 
                             database.save()
 
@@ -251,9 +247,10 @@ if __name__ == "__main__":
                         gm_id in database.data["gamemasters"]
                         and database.data["gamemasters"][gm_id]["is_deleted"] == False
                     ):
-                        print(
-                            f"\nYOU CHOOSE {database.data['gamemasters'][gm_id]['name']}"
-                        )
+
+                        gm = database.data["gamemasters"][gm_id]
+
+                        interface.show_gamemaster(gm)
 
                         is_confirmed = interface.confirm()
 
@@ -327,16 +324,8 @@ if __name__ == "__main__":
 
                         interface.header("FIND PARTY")
 
-                        print(f"ID: {party_id}")
-                        if (
-                            database.data["gamemasters"][party["gamemaster_id"]][
-                                "is_deleted"
-                            ]
-                            == False
-                        ):
-                            print(
-                                f"GAMEMASTER: {database.data['gamemasters'][party['gamemaster_id']]['name']}"
-                            )
+                        if database.data["gamemasters"][party["gamemaster_id"]]["is_deleted"] == False:
+                            print(f"GAMEMASTER: {database.data['gamemasters'][party['gamemaster_id']]['name']}")
                         else:
                             print(
                                 f"GAMEMASTER: {database.data['gamemasters'][party['gamemaster_id']]['name']} <deleted>"
@@ -349,9 +338,7 @@ if __name__ == "__main__":
                             if player["is_deleted"] == False:
                                 print(f"- {player['name']} ({player['discord']})")
                             else:
-                                print(
-                                    f"- {player['name']} ({player['discord']}) <deleted>"
-                                )
+                                print(f"- {player['name']} ({player['discord']}) <deleted>")
 
                     else:
                         print("\nParty not found!")
@@ -375,9 +362,7 @@ if __name__ == "__main__":
                         is_confirmed = interface.confirm()
 
                         if is_confirmed:
-                            created_at = database.data["parties"][party_id][
-                                "created_at"
-                            ]
+                            created_at = database.data["parties"][party_id]["created_at"]
                             gamemaster_id = entry.id("\nNEW GAMEMASTER ID: ")
 
                             if gamemaster_id not in database.data["gamemasters"]:
@@ -467,14 +452,10 @@ if __name__ == "__main__":
                 # LIST GAMEMASTERS
                 elif menu_option == 2:
                     interface.header("CONCLAVE GAMEMASTERS")
-                    print(
-                        f"{'ID':<8} {'GAMEMASTER':<20} {'EMAIL':<30} {'EXPERIENCE':<20}"
-                    )
+                    print(f"{'ID':<8} {'GAMEMASTER':<20} {'EMAIL':<30} {'EXPERIENCE':<20}")
                     print("=" * 85)
 
-                    for gamemaster_id, gamemaster in database.data[
-                        "gamemasters"
-                    ].items():
+                    for gamemaster_id, gamemaster in database.data["gamemasters"].items():
                         if gamemaster["is_deleted"] == False:
                             experience = f"{gamemaster['years_experience']} yrs"
                             print(
@@ -495,22 +476,14 @@ if __name__ == "__main__":
                     interface.header("CONCLAVE PARTIES BY GAME")
                     game_chosen = entry.game("ENTER A GAME: ")
 
-                    if game_chosen in [
-                        party["game"] for party in database.data["parties"].values()
-                    ]:
-                        print(
-                            f"\n{'PARTY ID':<12} {'GAMEMASTER':<20} {'NUMBER OF PLAYERS':<30} {'PLAYERS':<20}"
-                        )
+                    if game_chosen in [party["game"] for party in database.data["parties"].values()]:
+                        print(f"\n{'PARTY ID':<12} {'GAMEMASTER':<20} {'NUMBER OF PLAYERS':<30} {'PLAYERS':<20}")
                         print("=" * 98)
 
                         for party_id, party in database.data["parties"].items():
-                            if (
-                                game_chosen == party["game"]
-                                and party["is_deleted"] == False
-                            ):
+                            if game_chosen == party["game"] and party["is_deleted"] == False:
                                 players = ", ".join(
-                                    database.data["players"][player_id]["name"]
-                                    for player_id in party["player_ids"]
+                                    database.data["players"][player_id]["name"] for player_id in party["player_ids"]
                                 )
 
                                 print(
@@ -531,9 +504,7 @@ if __name__ == "__main__":
                 # LIST PLAYERS & GAMEMASTERS BY DATE
                 elif menu_option == 4:
                     interface.header("CONCLAVE PLAYERS & GAMEMASTERS BY DATE")
-                    date_filter = helper.fromiso(
-                        entry.date("CREATED FROM (YYYY-MM-DD): ")
-                    )
+                    date_filter = helper.fromiso(entry.date("CREATED FROM (YYYY-MM-DD): "))
 
                     print(f"\n{'ID':<8} {'TYPE':<12} {'NAME':<20} {'CREATED AT':<20}")
                     print("=" * 65)
