@@ -408,9 +408,9 @@ if __name__ == "__main__":
                     ):
                         print(f"\nYOU CHOOSE PARTY {party_id}")
 
-                        yes = input("CONTINUE? (Y/N): ").upper()
+                        is_confirmed = interface.confirm()
 
-                        if (yes == "Y") or (yes == ""):
+                        if is_confirmed:
                             database.data["parties"][party_id]["is_deleted"] = True
 
                             database.save()
