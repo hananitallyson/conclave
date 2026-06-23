@@ -101,7 +101,7 @@ def date(date):
             month = int(month)
             day = int(day)
 
-            if (1 <= month <= 12) and (1 <= day <= 31) and (year <= datetime.date.today().year):
+            if (0 < year <= datetime.date.today().year) and (0 < month <= datetime.date.today().month) and (0 < day <= datetime.date.today().day):
                 is_valid = True
 
     return is_valid
