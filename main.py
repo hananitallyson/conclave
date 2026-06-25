@@ -14,85 +14,73 @@ if __name__ == "__main__":
     while option != 0:
         option = interface.main_menu()
 
-        # PLAYERS
         if option == 1:
             menu_option = interface.player_menu()
+
             while menu_option != 0:
-                # CREATE PLAYER
                 if menu_option == 1:
                     PlayerController.create()
 
                     menu_option = interface.player_menu()
 
-                # FIND PLAYER
                 elif menu_option == 2:
                     PlayerController.find()
 
                     menu_option = interface.player_menu()
 
-                # UPDATE PLAYER
                 elif menu_option == 3:
                     PlayerController.update()
 
                     menu_option = interface.player_menu()
 
-                # DELETE PLAYER
                 elif menu_option == 4:
                     PlayerController.delete()
 
                     menu_option = interface.player_menu()
 
-        # GAMEMASTERS
         elif option == 2:
             menu_option = interface.gm_menu()
+
             while menu_option != 0:
-                # CREATE GAMEMASTER
                 if menu_option == 1:
                     GamemasterController.create()
 
                     menu_option = interface.gm_menu()
 
-                # FIND GAMEMASTER
                 elif menu_option == 2:
                     GamemasterController.find()
 
                     menu_option = interface.gm_menu()
 
-                # UPDATE GAMEMASTER
                 elif menu_option == 3:
                     GamemasterController.update()
 
                     menu_option = interface.gm_menu()
 
-                # DELETE GAMEMASTER
                 elif menu_option == 4:
                     GamemasterController.delete()
 
                     menu_option = interface.gm_menu()
 
-        # PARTIES
         elif option == 3:
             menu_option = interface.party_menu()
+
             while menu_option != 0:
-                # CREATE PARTY
                 if menu_option == 1:
                     PartyController.create()
 
                     menu_option = interface.party_menu()
 
-                # FIND PARTY
                 elif menu_option == 2:
                     PartyController.find()
 
                     menu_option = interface.party_menu()
 
-                # UPDATE PARTY
                 elif menu_option == 3:
                     PartyController.update()
 
                     menu_option = interface.party_menu()
 
-                # DELETE PARTY
                 elif menu_option == 4:
                     PartyController.delete()
 
