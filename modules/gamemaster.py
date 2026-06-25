@@ -3,6 +3,28 @@ from utils import entry
 from utils import interface
 
 
+def crud(menu_option):
+    if menu_option == 1:
+        create()
+
+        return interface.gamemaster_menu()
+
+    elif menu_option == 2:
+        find()
+
+        return interface.gamemaster_menu()
+
+    elif menu_option == 3:
+        update()
+
+        return interface.gamemaster_menu()
+
+    elif menu_option == 4:
+        delete()
+
+        return interface.gamemaster_menu()
+
+
 def create():
     interface.header("CREATE GAMEMASTER")
 

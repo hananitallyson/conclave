@@ -4,6 +4,33 @@ from utils import interface
 from utils import helper
 
 
+def module(menu_option):
+    if menu_option == 1:
+        list_players()
+
+        menu_option = interface.log_menu()
+
+    elif menu_option == 2:
+        list_gamemasters()
+
+        menu_option = interface.log_menu()
+
+    elif menu_option == 3:
+        list_parties_by_game()
+
+        menu_option = interface.log_menu()
+
+    elif menu_option == 4:
+        list_all_by_date()
+
+        menu_option = interface.log_menu()
+
+    elif menu_option == 5:
+        list_players_by_gamemaster()
+
+        menu_option = interface.log_menu()
+
+
 def list_players():
     interface.header("CONCLAVE PLAYERS")
     print(f"{'ID':<8} {'PLAYER':<20} {'EMAIL':<30} {'DISCORD':<20}")

@@ -3,6 +3,27 @@ from utils import entry
 from utils import interface
 
 
+def crud(menu_option):
+    if menu_option == 1:
+        create()
+
+        return interface.player_menu()
+
+    elif menu_option == 2:
+        find()
+
+        return interface.player_menu()
+
+    elif menu_option == 3:
+        update()
+
+        return interface.player_menu()
+
+    elif menu_option == 4:
+        delete()
+
+        return interface.player_menu()
+
 def create():
     interface.header("CREATE PLAYER")
 
