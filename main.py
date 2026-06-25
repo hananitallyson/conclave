@@ -2,9 +2,9 @@ import utils.database as database
 import utils.entry as entry
 import utils.helper as helper
 import utils.interface as interface
-import utils.player as PlayerController
-import utils.gamemaster as GamemasterController
-import utils.party as PartyController
+import modules.player as PlayerController
+import modules.gamemaster as GamemasterController
+import modules.party as PartyController
 
 if __name__ == "__main__":
     option = ""

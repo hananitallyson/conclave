@@ -1,6 +1,6 @@
-from . import database
-from . import entry
-from . import interface
+from utils import database
+from utils import entry
+from utils import interface
 
 
 def create():
