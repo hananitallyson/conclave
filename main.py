@@ -4,6 +4,7 @@ import utils.helper as helper
 import utils.interface as interface
 import utils.player as PlayerController
 import utils.gamemaster as GamemasterController
+import utils.party as PartyController
 
 if __name__ == "__main__":
     option = ""
@@ -75,153 +76,25 @@ if __name__ == "__main__":
             while menu_option != 0:
                 # CREATE PARTY
                 if menu_option == 1:
-                    interface.header("CREATE PARTY")
+                    PartyController.create()
 
-                    party_id = str(len(database.data["parties"]) + 1)
-
-                    print(f"You are creating the party with ID {party_id}.\n")
-
-                    gamemaster_id = entry.id("GAMEMASTER ID: ")
-
-                    if gamemaster_id not in database.data["gamemasters"]:
-                        print("\nGamemaster not found!")
-
-                        interface.wait()
-                    else:
-                        players = input("PLAYERS IDs (e.g. 1 3 5): ").split(" ")
-
-                        game = input("GAMERULES: ")
-
-                        created_at = database.timestamp()
-
-                        database.data["parties"][party_id] = {
-                            "gamemaster_id": gamemaster_id,
-                            "number_of_players": len(players),
-                            "player_ids": players,
-                            "game": game,
-                            "created_at": created_at,
-                            "is_deleted": False,
-                        }
-
-                        database.save()
-
-                        print("\nParty created successfully!")
-
-                        interface.wait()
-
-                        menu_option = interface.party_menu()
+                    menu_option = interface.party_menu()
 
                 # FIND PARTY
                 elif menu_option == 2:
-                    interface.header("FIND PARTY")
-
-                    party_id = entry.id("SEARCH BY PARTY ID: ")
-
-                    if (
-                        party_id in database.data["parties"]
-                        and database.data["parties"][party_id]["is_deleted"] == False
-                    ):
-                        party = database.data["parties"][party_id]
-
-                        interface.header("FIND PARTY")
-
-                        if database.data["gamemasters"][party["gamemaster_id"]]["is_deleted"] == False:
-                            print(f"GAMEMASTER: {database.data['gamemasters'][party['gamemaster_id']]['name']}")
-                        else:
-                            print(
-                                f"GAMEMASTER: {database.data['gamemasters'][party['gamemaster_id']]['name']} <deleted>"
-                            )
-                        print(f"GAME: {party['game']}")
-                        print(f"NUMBER OF PLAYERS: {party['number_of_players']}")
-                        print("PLAYERS:")
-                        for player_id in party["player_ids"]:
-                            player = database.data["players"][player_id]
-                            if player["is_deleted"] == False:
-                                print(f"- {player['name']} ({player['discord']})")
-                            else:
-                                print(f"- {player['name']} ({player['discord']}) <deleted>")
-
-                    else:
-                        print("\nParty not found!")
-
-                    interface.wait()
+                    PartyController.find()
 
                     menu_option = interface.party_menu()
 
                 # UPDATE PARTY
                 elif menu_option == 3:
-                    interface.header("UPDATE PARTY")
-
-                    party_id = entry.id("SELECT THE PARTY ID: ")
-
-                    if (
-                        party_id in database.data["parties"]
-                        and database.data["parties"][party_id]["is_deleted"] == False
-                    ):
-                        print(f"\nYOU CHOOSE PARTY {party_id}")
-
-                        is_confirmed = interface.confirm()
-
-                        if is_confirmed:
-                            created_at = database.data["parties"][party_id]["created_at"]
-                            gamemaster_id = entry.id("\nNEW GAMEMASTER ID: ")
-
-                            if gamemaster_id not in database.data["gamemasters"]:
-                                print("\nGamemaster not found!")
-
-                                interface.wait()
-
-                                continue
-
-                            players = input("NEW PLAYERS IDs (e.g. 1 3 5): ").split(" ")
-
-                            game = entry.game("NEW GAMERULES: ")
-
-                            database.data["parties"][party_id] = {
-                                "gamemaster_id": gamemaster_id,
-                                "number_of_players": len(players),
-                                "player_ids": players,
-                                "game": game,
-                                "created_at": created_at,
-                                "is_deleted": False,
-                            }
-
-                            database.save()
-
-                            print("\nParty updated successfully!")
-
-                    else:
-                        print("\nParty not found!")
-
-                    interface.wait()
+                    PartyController.update()
 
                     menu_option = interface.party_menu()
 
                 # DELETE PARTY
                 elif menu_option == 4:
-                    interface.header("DELETE PARTY")
-
-                    party_id = entry.id("SELECT THE PARTY ID: ")
-
-                    if (
-                        party_id in database.data["parties"]
-                        and database.data["parties"][party_id]["is_deleted"] == False
-                    ):
-                        print(f"\nYOU CHOOSE PARTY {party_id}")
-
-                        is_confirmed = interface.confirm()
-
-                        if is_confirmed:
-                            database.data["parties"][party_id]["is_deleted"] = True
-
-                            database.save()
-
-                            print("\nParty deleted successfully!")
-
-                    else:
-                        print("\nParty not found!")
-
-                    interface.wait()
+                    PartyController.delete()
 
                     menu_option = interface.party_menu()
 
