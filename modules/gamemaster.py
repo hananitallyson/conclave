@@ -3,7 +3,7 @@ from utils import entry
 from utils import interface
 
 
-def crud(menu_option):
+def run(menu_option):
     if menu_option == 1:
         create()
 

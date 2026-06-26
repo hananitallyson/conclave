@@ -4,7 +4,7 @@ from utils import interface
 from utils import helper
 
 
-def module(menu_option):
+def run(menu_option):
     if menu_option == 1:
         list_players()
 
